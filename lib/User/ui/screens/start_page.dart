@@ -70,7 +70,9 @@ class _StartpageState extends State<Startpage> {
                 RaisedButton(
                   onPressed: () {
                     // validate that the name is not null
-                    if (_formKey.currentState.validate()) {}
+                    if (_formKey.currentState.validate()) {
+                      print(_controller.text);
+                    }
                   },
                   child: Text("Comenzar"),
                   //color: Color(0xff7ec7d0),

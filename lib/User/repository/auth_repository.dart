@@ -4,5 +4,5 @@ import 'package:temis/User/repository/firebase_auth_api.dart';
 class AuthRepository {
   final _firtabaseAuthApi = FirebaseAuthAPI();
 
-  Future<FirebaseUser> singInFirebase() => _firtabaseAuthApi.signIn();
+  Future<FirebaseUser> singInFirebaseAnon() => _firtabaseAuthApi.signIn();
 }

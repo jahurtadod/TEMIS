@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'User/ui/screens/start_page.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:temis/User/bloc/bloc_user.dart';
+
+import 'User/ui/screens/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,19 +43,22 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'TEMIS',
-      theme: ThemeData(
-        colorScheme: colorScheme,
-        primaryColor: Color(0xff7ec7d0),
-        accentColor: Color(0xff7ec7d0),
-        hintColor: Color(0xff7ec7d0),
-        buttonColor: Color(0xff7ec7d0),
-        textTheme: textTheme,
-        primaryTextTheme: textTheme,
+    return BlocProvider(
+      bloc: UserBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'TEMIS',
+        theme: ThemeData(
+          colorScheme: colorScheme,
+          primaryColor: Color(0xff7ec7d0),
+          accentColor: Color(0xff7ec7d0),
+          hintColor: Color(0xff7ec7d0),
+          buttonColor: Color(0xff7ec7d0),
+          textTheme: textTheme,
+          primaryTextTheme: textTheme,
+        ),
+        home: LoginPage(),
       ),
-      home: Startpage(),
     );
   }
 }

@@ -1,13 +1,20 @@
+import 'package:temis/User/ui/screens/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:temis/User/bloc/bloc_user.dart';
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 
-class Startpage extends StatefulWidget {
+import 'home_page.dart';
+
+class LoginPage extends StatefulWidget {
   @override
-  _StartpageState createState() => _StartpageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _StartpageState extends State<Startpage> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController _controller;
   final _formKey = GlobalKey<FormState>();
+  UserBloc userBloc;
 
   void initState() {
     super.initState();
@@ -21,6 +28,24 @@ class _StartpageState extends State<Startpage> {
 
   @override
   Widget build(BuildContext context) {
+    userBloc = BlocProvider.of(context);
+    return _home();
+  }
+
+  Widget _home() {
+    return StreamBuilder(
+      stream: userBloc.authStatus,
+      builder: (context, AsyncSnapshot snapshot) {
+        if (!snapshot.hasData) {
+          return _login();
+        } else {
+          return HomePage();
+        }
+      },
+    );
+  }
+
+  Widget _login() {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -46,6 +71,7 @@ class _StartpageState extends State<Startpage> {
                   key: _formKey,
                   child: TextFormField(
                     controller: _controller,
+                    // ignore: missing_return
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'Para continuar debes ingresar un nombre';
@@ -72,6 +98,8 @@ class _StartpageState extends State<Startpage> {
                     // validate that the name is not null
                     if (_formKey.currentState.validate()) {
                       print(_controller.text);
+                      userBloc.signIn().then((FirebaseUser user) =>
+                          print("Usuario ${user.displayName}"));
                     }
                   },
                   child: Text("Comenzar"),

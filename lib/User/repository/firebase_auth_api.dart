@@ -5,6 +5,11 @@ class FirebaseAuthAPI {
 
   Future<FirebaseUser> signIn() async {
     AuthResult result = await _auth.signInAnonymously();
+    print(result.user);
     return result.user;
+  }
+
+  signOut() async {
+    await _auth.signOut().then((onValue) => print("cesion cerrada"));
   }
 }

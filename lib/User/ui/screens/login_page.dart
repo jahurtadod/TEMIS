@@ -1,3 +1,4 @@
+import 'package:temis/User/model/user.dart';
 import 'package:temis/User/ui/screens/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:temis/User/bloc/bloc_user.dart';
@@ -94,12 +95,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Spacer(),
                 RaisedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // validate that the name is not null
                     if (_formKey.currentState.validate()) {
-                      print(_controller.text);
-                      userBloc.signIn().then((FirebaseUser user) =>
-                          print("Usuario ${user.displayName}"));
+                      userBloc.signIn().then((FirebaseUser user) {
+                        userBloc.updateUserData(User(
+                          uid: user.uid,
+                          name: _controller.text,
+                        ));
+                      });
                     }
                   },
                   child: Text("Comenzar"),

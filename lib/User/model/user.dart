@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temis/User/model/games.dart';
+import 'package:temis/User/model/game.dart';
 
 class User {
   final String uid;
@@ -7,7 +7,7 @@ class User {
   final String email;
   final int numberGames;
   final int points;
-  final List<Games> myGames;
+  final List<Game> myGames;
 
   User({
     Key key,

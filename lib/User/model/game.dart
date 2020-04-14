@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temis/Case/model/case.dart';
 import 'package:temis/User/model/user.dart';
 
-class Games {
+class Game {
   final String id;
   final bool active;
   final String nameCase;
@@ -11,9 +11,9 @@ class Games {
   final DateTime lastMessageDate;
   final String lastMessage;
   final String colorCase;
-  User userOwner;
+  //User userOwner;
 
-  Games({
+  Game({
     Key key,
     @required this.active,
     @required this.nameCase,
@@ -22,7 +22,7 @@ class Games {
     @required this.lastMessageDate,
     @required this.lastMessage,
     @required this.colorCase,
-    @required this.userOwner,
+    //this.userOwner,
     this.id,
   });
 }

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
 import 'package:temis/User/bloc/bloc_user.dart';
+import 'package:temis/User/ui/screens/home_page.dart';
 
 import 'User/ui/screens/login_page.dart';
 
@@ -57,7 +58,11 @@ class MyApp extends StatelessWidget {
           textTheme: textTheme,
           primaryTextTheme: textTheme,
         ),
-        home: LoginPage(),
+        initialRoute: 'home_page',
+        routes: {
+          'login_page': (_) => LoginPage(),
+          'home_page': (_) => HomePage(),
+        },
       ),
     );
   }

@@ -1,11 +1,8 @@
 import 'package:temis/User/model/user.dart';
-import 'package:temis/User/ui/screens/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:temis/User/bloc/bloc_user.dart';
 import 'package:flutter/material.dart';
 import 'package:generic_bloc_provider/generic_bloc_provider.dart';
-
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -40,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         if (!snapshot.hasData) {
           return _login();
         } else {
-          return HomePage();
+          Navigator.pushNamed(context, 'home_page');
         }
       },
     );

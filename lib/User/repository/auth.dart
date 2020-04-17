@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:temis/User/model/user.dart';
+import 'package:temis/User/repository/database_firestore.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,6 +19,10 @@ class AuthService {
   Future signInAnon() async {
     try {
       AuthResult result = await _auth.signInAnonymously();
+
+      // Create a new document for the user with the uid
+      await DatabaseService(uid: result.user.uid).updateUserData(null);
+
       return _userFromFirebaseUser(result.user);
     } catch (e) {
       print(e.toString());

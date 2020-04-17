@@ -40,6 +40,10 @@ class MyApp extends StatelessWidget {
         color: Color(0xfff4f4f4),
         fontSize: 16,
       ),
+      display1: GoogleFonts.roboto(
+        color: Color(0xfff4f4f4),
+        fontSize: 12,
+      ),
       button: GoogleFonts.comfortaa(
         color: Color(0xfff4f4f4),
         fontSize: 12,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:temis/Case/model/case.dart';
-import 'package:temis/User/model/user.dart';
 
 class Game {
   final String id;

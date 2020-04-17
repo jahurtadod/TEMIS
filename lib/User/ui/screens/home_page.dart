@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:temis/User/model/game.dart';
 import 'package:temis/User/model/user.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage2 extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage2> {
   UserBloc userBloc;
   User user;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               StreamBuilder(
-                stream: userBloc.streamFirebase,
+                stream: userBloc.authStatus,
                 builder: (context, AsyncSnapshot snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
@@ -34,10 +39,9 @@ class _HomePageState extends State<HomePage> {
                     case ConnectionState.waiting:
                       return CircularProgressIndicator();
                     case ConnectionState.active:
-                      return showNameUser(snapshot);
-
+                      return Container();
                     case ConnectionState.done:
-                      return showNameUser(snapshot);
+                      return CircularProgressIndicator();
                   }
                 },
               ),
@@ -103,19 +107,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget showNameUser(AsyncSnapshot snapshot) {
-    if (!snapshot.hasData) {
-      print("no logeado");
-      return Text(
-        "Tienes que crear un perfil",
-      );
-    } else {
-      print(snapshot.data.uid);
-      return Text(
-        "Hola, ${snapshot.data.uid} ",
-      );
-    }
-  }
+  // showNameUser(AsyncSnapshot snapshot) async {
+  //   print("hola");
+  //   userBloc.getDataUser(snapshot.data.uid).then((resp) {
+  //     print(resp);
+  //   });
+  // }
 
   Widget showGamesAct(AsyncSnapshot snapshot) {
     List<Game> games = userBloc.buildGames(snapshot.data.documents);

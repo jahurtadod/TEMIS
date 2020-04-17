@@ -62,4 +62,18 @@ class CloudFirestoreAPI {
     });
     return games;
   }
+
+  Future<User> dataUser(String uid) async {
+    var ref = _db.collection(USERS).document("ZvTNDNqojtbmnxNpHr2UCeZ8GxU2");
+    ref.get().then((doc) {
+      if (doc.exists) {
+        print("Si existe");
+        print("${doc.data['uid']} + ${doc.data['name']}");
+        return User(uid: doc.data['uid'], name: doc.data['name']);
+      } else {
+        print("No existe");
+        return User(uid: null, name: null);
+      }
+    });
+  }
 }

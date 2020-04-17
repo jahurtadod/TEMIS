@@ -40,6 +40,7 @@ class UserBloc implements Bloc {
   Stream<QuerySnapshot> get gamesStream => gamesListStream;
   List<Game> buildGames(List<DocumentSnapshot> gamesListSnapshot) =>
       _cloudFirestoreRepository.buildGamesFirestore(gamesListSnapshot);
+  Future<User> getDataUser(String uid) async => await _cloudFirestoreRepository.getUserFirestore(uid);
 
   @override
   void dispose() {}

@@ -13,4 +13,7 @@ class CloudFirestoreRepository {
       _cloudFirestoreApi.updateGameData(game);
   List<Game> buildGamesFirestore(List<DocumentSnapshot> gamesListSnapshot) =>
       _cloudFirestoreApi.buildGames(gamesListSnapshot);
+  Future<User> getUserFirestore(String uid) => _cloudFirestoreApi.dataUser(uid);
+
+  // User dataUserFirebase(DocumentSnapshot userDataSnapshot) => _cloudFirestoreApi.dataUser(userDataSnapshot);
 }

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/auth.dart';
+import 'package:temis/User/ui/screens/home.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/wrapper.dart';
 
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = ColorScheme.dark(
       background: Color(0xff292a2d),
-      primaryVariant: Color(0xff7ec7d0),
-      // secondary: Color(0xff7ec7d0),
+      primary: Color(0xff7ec7d0),
+      secondary: Color(0xffffab00),
       // secondaryVariant: Color(0xff7ec7d0),
       // surface: Color(0xff7ec7d0),
       // primary: Color(0xff7ec7d0),
@@ -44,6 +45,10 @@ class MyApp extends StatelessWidget {
         color: Color(0xfff4f4f4),
         fontSize: 12,
       ),
+      caption: GoogleFonts.roboto(
+        color: Color(0xffffab00),
+        fontSize: 10,
+      ),
       button: GoogleFonts.comfortaa(
         color: Color(0xfff4f4f4),
         fontSize: 12,
@@ -67,7 +72,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (_) => Wrapper(),
           'login_page': (_) => LoginPage(),
-          'sign_in': (_) => SignIn()
+          'sign_in': (_) => SignIn(),
+          'home': (_) => Home()
         },
       ),
     );

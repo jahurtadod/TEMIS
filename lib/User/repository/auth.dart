@@ -16,12 +16,12 @@ class AuthService {
   }
 
   // Sign in anon
-  Future signInAnon() async {
+  Future signInAnon(User user) async {
     try {
       AuthResult result = await _auth.signInAnonymously();
 
       // Create a new document for the user with the uid
-      await DatabaseService(uid: result.user.uid).updateUserData(null);
+      await DatabaseService(uid: result.user.uid).updateUserData(user);
 
       return _userFromFirebaseUser(result.user);
     } catch (e) {

@@ -15,22 +15,42 @@ class DatabaseService {
 
   //
   Future updateUserData(User user) async {
-    return await gamesCollecction.document(uid).setData({
+    return await usersCollecction.document(uid).setData({
       'uid': uid,
       'name': user.name,
       'email': user.email,
-      'numberGames': user.numberGames,
-      'points': user.points,
+      'numberGames': 0,
+      'points': 0,
       'myGames': user.myGames,
       'lastSignIn': DateTime.now(),
     });
   }
 
   // Get User Stream
-  Stream<DocumentSnapshot> get user {
+  Stream<User> get user {
+    return usersCollecction.document(uid).snapshots().map((doc) {
+      return User(uid: doc.data['uid'], name: doc.data['name']);
+    });
+  }
+
+  // Get userData stream
+  Stream<User> get userData {
     return usersCollecction
-        .document("ZvTNDNqojtbmnxNpHr2UCeZ8GxU2")
-        .snapshots();
+        .document(uid)
+        .snapshots()
+        .map(_userDataFromSnapshot);
+  }
+
+  // UserData from snapshot
+  User _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return User(
+      uid: uid,
+      name: snapshot.data['name'],
+      email: snapshot.data['email'],
+      numberGames: snapshot.data['numberGames'],
+      points: snapshot.data['points'],
+      myGames: snapshot.data['myGames'],
+    );
   }
 
   // Get Games Stream

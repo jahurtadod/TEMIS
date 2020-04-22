@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/auth.dart';
 import 'package:temis/widgets/loading.dart';
 
@@ -78,7 +79,8 @@ class _SignInState extends State<SignIn> {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
                           Future.delayed(Duration(seconds: 5), () async {
-                            dynamic result = await _auth.signInAnon();
+                            dynamic result = await _auth.signInAnon(
+                                User(uid: null, name: _controller.text));
                             if (result == null) {
                               setState(() => loading = false);
                               print("Error Signing In");

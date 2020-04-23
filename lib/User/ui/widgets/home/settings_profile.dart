@@ -21,8 +21,7 @@ class _SettingsProfileState extends State<SettingsProfile> {
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           return Container(
-            color: Colors.white,
-            // color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.background,
             padding: EdgeInsets.symmetric(
               vertical: 30.0,
               horizontal: 45.0,

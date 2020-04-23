@@ -15,8 +15,7 @@ class Profile extends StatelessWidget {
             padding: EdgeInsets.only(top: 20, bottom: 5),
             child: Text(
               "Perfil",
-              style: Theme.of(context).textTheme.title.copyWith(
-                  color: Theme.of(context).colorScheme.primaryVariant),
+              style: Theme.of(context).textTheme.title,
             ),
           ),
           SizedBox(
@@ -43,8 +42,8 @@ class Profile extends StatelessWidget {
             title: Text(
               user.name,
               style: Theme.of(context).textTheme.title.copyWith(
-                  fontSize: 16,
-                  color: Theme.of(context).colorScheme.primaryVariant),
+                    fontSize: 16,
+                  ),
             ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,14 +51,14 @@ class Profile extends StatelessWidget {
                 Text(
                   "Score: ${user.points}",
                   style: Theme.of(context).textTheme.title.copyWith(
-                      fontSize: 14,
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                        fontSize: 14,
+                      ),
                 ),
                 Text(
                   "Numero de Partidas: ${user.numberGames}",
                   style: Theme.of(context).textTheme.title.copyWith(
-                      fontSize: 10,
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                        fontSize: 10,
+                      ),
                 ),
               ],
             ),

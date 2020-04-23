@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:temis/User/repository/auth.dart';
 
 class Settings extends StatelessWidget {
-  const Settings({
-    Key key,
-  }) : super(key: key);
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +24,10 @@ class Settings extends StatelessWidget {
             Flexible(
               flex: 3,
               child: RaisedButton(
-                onPressed: () {},
-                child: Text("Cerrar Sesión ;-; "),
+                onPressed: () async {
+                  await _auth.signOut();
+                },
+                child: Text("Cerrar Sesión ;-;"),
               ),
             ),
             SizedBox(
@@ -45,3 +46,5 @@ class Settings extends StatelessWidget {
     );
   }
 }
+
+class _auth {}

@@ -5,8 +5,8 @@ import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/auth.dart';
 import 'package:temis/User/repository/database_firestore.dart';
 import 'package:temis/User/ui/widgets/home/settings_profile.dart';
-import 'package:temis/User/ui/widgets/info_user.dart';
 import 'package:temis/User/ui/widgets/list_case_active.dart';
+import 'package:temis/User/ui/widgets/name_user.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
@@ -44,10 +44,12 @@ class Home extends StatelessWidget {
                           context: context,
                           builder: (context) {
                             return ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10.0),
-                                    topRight: Radius.circular(10.0)),
-                                child: SettingsProfile());
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10.0),
+                                topRight: Radius.circular(10.0),
+                              ),
+                              child: SettingsProfile(),
+                            );
                           },
                         );
                         // showModalBottomSheet(
@@ -68,14 +70,6 @@ class Home extends StatelessWidget {
                         // );
                       },
                     ),
-                    // IconButton(
-                    //   iconSize: 40,
-                    //   padding: EdgeInsets.all(0),
-                    //   icon: Icon(Icons.more_vert),
-                    //   color: Colors.white,
-                    //   alignment: Alignment.topRight,
-                    //   onPressed: () {},
-                    // ),
                   ],
                 ),
                 Expanded(
@@ -86,27 +80,14 @@ class Home extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Spacer(),
-                        InfoUser(),
+                        NameUser(),
                         SizedBox(height: 15),
-                        Text(
-                          "TEMIS Ascendere",
-                          style: Theme.of(context).textTheme.title,
-                        ),
-                        SizedBox(height: 25),
                         Text(
                           "Casos Activos",
                           style: Theme.of(context).textTheme.subtitle,
                         ),
                         ListCaseActive(),
                         // Spacer(),
-                        RaisedButton(
-                          onPressed: () async {
-                            await _auth.signOut();
-                          },
-                          child: Text("Cerrar Sesion"),
-                          //color: Color(0xff7ec7d0),
-                          shape: RoundedRectangleBorder(),
-                        ),
                         Spacer(),
                       ],
                     ),

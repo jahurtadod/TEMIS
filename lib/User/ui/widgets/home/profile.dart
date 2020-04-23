@@ -11,9 +11,16 @@ class Profile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "Perfil",
-            style: Theme.of(context).textTheme.title,
+          Container(
+            padding: EdgeInsets.only(top: 20, bottom: 5),
+            child: Text(
+              "Perfil",
+              style: Theme.of(context).textTheme.title.copyWith(
+                  color: Theme.of(context).colorScheme.primaryVariant),
+            ),
+          ),
+          SizedBox(
+            width: 20,
           ),
           ListTile(
             contentPadding: EdgeInsets.all(0.0),
@@ -35,31 +42,28 @@ class Profile extends StatelessWidget {
             ),
             title: Text(
               user.name,
-              style: Theme.of(context).textTheme.title.copyWith(fontSize: 15),
+              style: Theme.of(context).textTheme.title.copyWith(
+                  fontSize: 16,
+                  color: Theme.of(context).colorScheme.primaryVariant),
             ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "Score: ${user.points}",
-                  style:
-                      Theme.of(context).textTheme.title.copyWith(fontSize: 13),
+                  style: Theme.of(context).textTheme.title.copyWith(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
                 Text(
                   "Numero de Partidas: ${user.numberGames}",
-                  style:
-                      Theme.of(context).textTheme.title.copyWith(fontSize: 8),
+                  style: Theme.of(context).textTheme.title.copyWith(
+                      fontSize: 10,
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
               ],
             ),
           ),
-          
-          InkWell(
-            child: Text(
-              "Restablecer Datos",
-              style: Theme.of(context).textTheme.caption,
-            ),
-          )
         ],
       ),
     );

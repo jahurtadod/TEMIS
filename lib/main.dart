@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       background: Color(0xff292a2d),
       primary: Color(0xff7ec7d0),
       secondary: Color(0xffffab00),
+      primaryVariant: Color(0xff292a2d),
       // secondaryVariant: Color(0xff7ec7d0),
       // surface: Color(0xff7ec7d0),
       // primary: Color(0xff7ec7d0),
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
       ),
       caption: GoogleFonts.roboto(
         color: Color(0xffffab00),
-        fontSize: 10,
+        fontSize: 12,
       ),
       button: GoogleFonts.comfortaa(
         color: Color(0xfff4f4f4),
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'TEMIS',
         theme: ThemeData(
+          //bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
           colorScheme: colorScheme,
           // primaryColor: Color(0xff7ec7d0),
           // accentColor: Color(0xff7ec7d0),

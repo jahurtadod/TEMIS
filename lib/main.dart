@@ -17,33 +17,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = ColorScheme.dark(
-      background: Color(0xff292a2d),
-      primary: Color(0xff7ec7d0),
+      background: Color(0xfff4f4f4),
+      primary: Color(0xff00acc1),
       secondary: Color(0xffffab00),
       primaryVariant: Color(0xff292a2d),
+      onBackground: Color(0xff7ec7d0),
       // secondaryVariant: Color(0xff7ec7d0),
       // surface: Color(0xff7ec7d0),
       // primary: Color(0xff7ec7d0),
       // error: Color(0xff7ec7d0),
       // onPrimary: Color(0xff7ec7d0),
-      // onSecondary: Color(0xff7ec7d0),
+      onSecondary: Color(0xfff9f9f9),
       // onSurface: Color(0xff7ec7d0),
-      // onBackground: Color(0xff7ec7d0),
       // onError: Color(0xff7ec7d0),
       // brightness: Color(0xff7ec7d0),
     );
 
     final TextTheme textTheme = TextTheme(
       title: GoogleFonts.comfortaa(
-        color: Color(0xfff4f4f4),
+        color: Color(0xff020202),
         fontSize: 24,
       ),
       subtitle: GoogleFonts.roboto(
-        color: Color(0xfff4f4f4),
-        fontSize: 16,
+        color: Color(0xff292A2D),
+        fontSize: 18,
       ),
       display1: GoogleFonts.roboto(
-        color: Color(0xfff4f4f4),
+        color: Color(0xff020202),
         fontSize: 12,
       ),
       caption: GoogleFonts.roboto(
@@ -62,8 +62,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'TEMIS',
         theme: ThemeData(
-          //bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
           colorScheme: colorScheme,
+          //bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
+
           // primaryColor: Color(0xff7ec7d0),
           // accentColor: Color(0xff7ec7d0),
           // hintColor: Color(0xff7ec7d0),

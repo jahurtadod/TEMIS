@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/database_firestore.dart';
-import 'package:temis/User/ui/widgets/home/profile.dart';
-import 'package:temis/User/ui/widgets/home/settings.dart';
+import 'package:temis/User/ui/widgets/home/settings/profile.dart';
+import 'package:temis/User/ui/widgets/home/settings/settings.dart';
 import 'package:temis/widgets/loading.dart';
 
 class SettingsProfile extends StatefulWidget {

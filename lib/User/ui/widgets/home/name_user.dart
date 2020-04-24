@@ -17,42 +17,49 @@ class _NameUserState extends State<NameUser> {
       stream: DatabaseService(uid: user.uid).userData,
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Hola, ${snapshot.data.name}",
-                style: Theme.of(context).textTheme.title,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "¿Estas listo para una nueva historia?",
-                style: Theme.of(context).textTheme.title.copyWith(
-                      fontSize: 14,
-                    ),
-              ),
-            ],
+          User user = snapshot.data;
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 45),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Hola, ${user.name}",
+                  style: Theme.of(context).textTheme.title,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "¿Estas listo para una nueva historia?",
+                  style: Theme.of(context).textTheme.title.copyWith(
+                        fontSize: 14,
+                      ),
+                ),
+              ],
+            ),
           );
         } else {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Hola, ",
-                style: Theme.of(context).textTheme.title,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "¿Estas listo para una nueva historia?",
-                style: Theme.of(context).textTheme.title.copyWith(
-                      fontSize: 14,
-                    ),
-              ),
-            ],
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 45),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Hola,",
+                  style: Theme.of(context).textTheme.title,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "¿Estas listo para una nueva historia?",
+                  style: Theme.of(context).textTheme.title.copyWith(
+                        fontSize: 14,
+                      ),
+                ),
+              ],
+            ),
           );
         }
       },

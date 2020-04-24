@@ -55,7 +55,7 @@ class DatabaseService {
 
   // Get Games Stream
   Stream<List<Game>> get gamesUser {
-    return gamesCollecction.snapshots().map(_gamesListFromSnapshot);
+    return gamesCollecction.limit(2).snapshots().map(_gamesListFromSnapshot);
   }
 
   // Games List from snapshot

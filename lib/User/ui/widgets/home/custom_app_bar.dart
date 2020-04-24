@@ -9,7 +9,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      //automaticallyImplyLeading: false,
       backgroundColor: Theme.of(context).colorScheme.onSecondary,
       flexibleSpace: Center(
         widthFactor: 0.1,
@@ -24,9 +24,12 @@ class CustomAppBar extends StatelessWidget {
                     fontSize: 22, color: Theme.of(context).colorScheme.primary),
               ),
               IconButton(
-                padding: EdgeInsets.all(0.0),
+                //padding: EdgeInsets.all(0.0),
                 color: Theme.of(context).colorScheme.primary,
-                icon: Icon(Icons.more_vert, size: 40.0),
+                icon: Icon(
+                  Icons.more_vert,
+                  size: 10.0,
+                ),
                 onPressed: () {
                   showModalBottomSheet(
                     backgroundColor: Colors.black12,

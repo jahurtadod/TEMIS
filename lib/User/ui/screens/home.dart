@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:temis/User/model/game.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/database_firestore.dart';
-import 'package:temis/User/ui/widgets/home/chats/list_case_active.dart';
-import 'package:temis/User/ui/widgets/home/custom_app_bar.dart';
+import 'package:temis/User/ui/widgets/home/case.dart';
+import 'package:temis/User/ui/widgets/home/cases_actives/list_case_active.dart';
 import 'package:temis/User/ui/widgets/home/name_user.dart';
 import 'package:temis/widgets/loading.dart';
 
@@ -30,10 +30,6 @@ class _HomeState extends State<Home> {
       ],
       child: SafeArea(
         child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
-            child: CustomAppBar(),
-          ),
           backgroundColor: Theme.of(context).colorScheme.background,
           body: StreamBuilder<User>(
               stream: DatabaseService(uid: user.uid).userData,
@@ -53,12 +49,9 @@ class _HomeState extends State<Home> {
                               children: <Widget>[
                                 Spacer(),
                                 NameUser(),
-                                SizedBox(height: 15),
                                 ListCaseActive(),
-                                Text(
-                                  "Comenzar nueva aventura ${snapshot.data.uid}",
-                                  style: Theme.of(context).textTheme.subtitle,
-                                ),
+                                SizedBox(height: 20),
+                                Case(),
                                 Spacer(),
                               ],
                             ),

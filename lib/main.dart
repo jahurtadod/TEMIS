@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = ColorScheme.dark(
-      background: Color(0xfff4f4f4),
+      background: Color(0xfffdfdfd),
       primary: Color(0xff00acc1),
       secondary: Color(0xffffab00),
-      primaryVariant: Color(0xff292a2d),
+      primaryVariant: Color(0xff0C0A12),
       onBackground: Color(0xff7ec7d0),
       // secondaryVariant: Color(0xff7ec7d0),
       // surface: Color(0xff7ec7d0),
@@ -35,12 +35,12 @@ class MyApp extends StatelessWidget {
 
     final TextTheme textTheme = TextTheme(
       title: GoogleFonts.comfortaa(
-        color: Color(0xff020202),
-        fontSize: 24,
+        color: Color(0xff0C0A12),
+        fontSize: 28,
       ),
       subtitle: GoogleFonts.roboto(
-        color: Color(0xff292A2D),
-        fontSize: 18,
+        color: Color(0xffA5A5A7),
+        fontSize: 16,
       ),
       display1: GoogleFonts.roboto(
         color: Color(0xff020202),

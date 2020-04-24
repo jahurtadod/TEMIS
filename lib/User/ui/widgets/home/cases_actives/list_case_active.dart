@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/game.dart';
-import 'package:temis/User/ui/widgets/home/chats/game_tile.dart';
+import 'package:temis/User/ui/widgets/home/cases_actives/game_tile.dart';
 
 class ListCaseActive extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _ListCaseActiveState extends State<ListCaseActive> {
   Widget build(BuildContext context) {
     var games = Provider.of<List<Game>>(context) ?? [];
     return Container(
-      padding: EdgeInsets.only(left: 45),
+      padding: EdgeInsets.only(left: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -25,7 +25,7 @@ class _ListCaseActiveState extends State<ListCaseActive> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(20, 20, 45, 20),
+            padding: EdgeInsets.fromLTRB(24, 16, 40, 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.horizontal(
                 left: Radius.circular(15),

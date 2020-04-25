@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
 import 'package:temis/User/model/user.dart';
 
@@ -12,6 +13,9 @@ class DatabaseService {
 
   final CollectionReference usersCollecction =
       Firestore.instance.collection('users');
+
+  final CollectionReference casesCollecction =
+      Firestore.instance.collection('cases');
 
   //
   Future updateUserData(User user) async {
@@ -69,6 +73,22 @@ class DatabaseService {
         lastMessageDate: (doc.data['lastMessageDate'] as Timestamp).toDate(),
         lastMessage: doc.data['lastMessage'],
         colorCase: doc.data['colorCase'],
+      );
+    }).toList();
+  }
+
+  // Stream Availables Cases
+  Stream<List<CaseModel>> get cases {
+    return casesCollecction.snapshots().map(_casesListFromSnapshot);
+  }
+
+  List<CaseModel> _casesListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return CaseModel(
+        description: doc.data["description"],
+        name: doc.data["name"],
+        pointsMax: doc.data["pointsMax"],
+        numberRoute: doc.data["numberRoute"],
       );
     }).toList();
   }

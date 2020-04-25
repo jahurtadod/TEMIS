@@ -13,7 +13,7 @@ class _ListCaseActiveState extends State<ListCaseActive> {
   Widget build(BuildContext context) {
     var games = Provider.of<List<Game>>(context) ?? [];
     return Container(
-      padding: EdgeInsets.only(left: 40),
+      padding: EdgeInsets.only(left: 40, bottom: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -30,7 +30,19 @@ class _ListCaseActiveState extends State<ListCaseActive> {
               borderRadius: BorderRadius.horizontal(
                 left: Radius.circular(15),
               ),
-              color: Color(0xffe97a98),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 8.0,
+                  spreadRadius: 0.1,
+                  offset: Offset(
+                    0.0,
+                    1.0,
+                  ),
+                ),
+              ],
+              color: Color(0xff393148),
+              // color: Color(0xffE97A98),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,

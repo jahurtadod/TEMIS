@@ -46,5 +46,3 @@ class Settings extends StatelessWidget {
     );
   }
 }
-
-class _auth {}

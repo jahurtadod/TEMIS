@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/auth.dart';
+import 'package:temis/User/ui/screens/chat._case.dart';
 import 'package:temis/User/ui/screens/home.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/wrapper.dart';
@@ -76,7 +77,8 @@ class MyApp extends StatelessWidget {
           '/': (_) => Wrapper(),
           'login_page': (_) => LoginPage(),
           'sign_in': (_) => SignIn(),
-          'home': (_) => Home()
+          'home': (_) => Home(),
+          'chat': (_) => ChatCase(),
         },
       ),
     );

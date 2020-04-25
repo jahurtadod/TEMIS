@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/case.dart';
+import 'package:temis/User/ui/widgets/home/list_case/select_role.dart';
+import 'package:temis/User/ui/widgets/home/settings/settings_profile.dart';
 
 class CaseView extends StatefulWidget {
   @override
@@ -52,7 +54,6 @@ class _CaseViewState extends State<CaseView> {
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
@@ -91,7 +92,22 @@ class _CaseViewState extends State<CaseView> {
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                        backgroundColor: Colors.black12,
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          return ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0),
+                            ),
+                            child: SelectRole(),
+                          );
+                        },
+                      );
+                    },
                     //color: Color(0xff7ec7d0),
                     color: Theme.of(context).colorScheme.secondary,
                     child: Text(

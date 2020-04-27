@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temis/Case/model/case.dart';
+import 'package:temis/User/model/case.dart';
 
 class Game {
   final String id;
   final bool active;
   final String nameCase;
   final int points;
-  final Case caseGame;
+  CaseModel caseGame;
   final DateTime lastMessageDate;
   final String lastMessage;
   final String colorCase;

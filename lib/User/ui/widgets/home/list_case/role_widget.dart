@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:temis/User/model/game.dart';
 
-class RoleWidget extends StatelessWidget {
+class RoleWidget extends StatefulWidget {
   var text = "";
   var icon = "";
   Game game;
 
   RoleWidget({this.icon, this.text, this.game});
 
+  @override
+  _RoleWidgetState createState() => _RoleWidgetState();
+}
+
+class _RoleWidgetState extends State<RoleWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,12 +37,12 @@ class RoleWidget extends StatelessWidget {
                   icon: Icon(Icons.face, size: 40.0),
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed('/startgame', arguments: game);
+                        .popAndPushNamed('/startgame', arguments: widget.game);
                   },
                 ),
                 Spacer(),
                 Text(
-                  text,
+                  widget.text,
                   style: Theme.of(context)
                       .textTheme
                       .subtitle

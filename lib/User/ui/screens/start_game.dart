@@ -22,7 +22,7 @@ class _StarGameState extends State<StarGame> {
             child: StreamBuilder<CaseModel>(
               stream: DatabaseService().dataCase(game.idCase),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                CaseModel dataCase = snapshot.data;
+                game.caseGame = snapshot.data;
                 if (snapshot.hasData) {
                   return SingleChildScrollView(
                     child: Column(
@@ -32,7 +32,7 @@ class _StarGameState extends State<StarGame> {
                         Container(
                           //width: double.infinity,
                           child: Text(
-                            dataCase.name,
+                            game.caseGame.name,
                             textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.title,
                           ),
@@ -50,7 +50,7 @@ class _StarGameState extends State<StarGame> {
                           height: 20,
                         ),
                         Text(
-                          dataCase.description,
+                          game.caseGame.description,
                           style: Theme.of(context).textTheme.subtitle,
                         ),
                         SizedBox(
@@ -71,7 +71,8 @@ class _StarGameState extends State<StarGame> {
                                             .primaryVariant),
                               ),
                               TextSpan(
-                                text: dataCase.numberPossibleEndings.toString(),
+                                text: game.caseGame.numberPossibleEndings
+                                    .toString(),
                               )
                             ],
                           ),
@@ -83,7 +84,10 @@ class _StarGameState extends State<StarGame> {
                           // padding: EdgeInsets.symmetric(horizontal: 40),
                           width: double.infinity,
                           child: RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushReplacementNamed('chat',
+                                  arguments: game);
+                            },
                             child: Text("Comenzar"),
                             //color: Color(0xff7ec7d0),
                             shape: RoundedRectangleBorder(),

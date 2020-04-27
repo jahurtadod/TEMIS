@@ -85,11 +85,26 @@ class DatabaseService {
   List<CaseModel> _casesListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return CaseModel(
+        id: doc.documentID,
         description: doc.data["description"],
         name: doc.data["name"],
         pointsMax: doc.data["pointsMax"],
         numberRoute: doc.data["numberRoute"],
       );
     }).toList();
+  }
+
+  // Stream Case from ID
+  Stream<CaseModel> dataCase(String id) {
+    return casesCollecction.document(id).snapshots().map(_caseDataFromSnapshot);
+  }
+
+  // UserData from snapshot
+  CaseModel _caseDataFromSnapshot(DocumentSnapshot snapshot) {
+    return CaseModel(
+      name: snapshot.data['name'],
+      description: snapshot.data['description'],
+      numberPossibleEndings: snapshot.data['numberPossibleEndings'],
+    );
   }
 }

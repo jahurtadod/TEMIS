@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:temis/User/ui/widgets/home/list_case/role.dart';
+import 'package:temis/User/model/game.dart';
+import 'package:temis/User/model/role.dart';
+import 'package:temis/User/ui/widgets/home/list_case/role_widget.dart';
 
 class SelectRole extends StatefulWidget {
+  String idCase;
+
+  SelectRole({@required this.idCase});
+
   @override
   _SelectRoleState createState() => _SelectRoleState();
 }
@@ -28,11 +34,32 @@ class _SelectRoleState extends State<SelectRole> {
           ),
           Row(
             children: <Widget>[
-              Role(icon: "face", text: "Juez"),
+              RoleWidget(
+                icon: "face",
+                text: "Juez",
+                game: Game(
+                  idCase: widget.idCase,
+                  role: Role().juez,
+                ),
+              ),
               Spacer(),
-              Role(icon: "face", text: "Fiscalia"),
+              RoleWidget(
+                icon: "face",
+                text: "Fiscalia",
+                game: Game(
+                  idCase: widget.idCase,
+                  role: Role().fiscalia,
+                ),
+              ),
               Spacer(),
-              Role(icon: "face", text: "Defensa"),
+              RoleWidget(
+                icon: "face",
+                text: "Defensa",
+                game: Game(
+                  idCase: widget.idCase,
+                  role: Role().defensa,
+                ),
+              ),
             ],
           )
         ],

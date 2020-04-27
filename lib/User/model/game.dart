@@ -10,18 +10,21 @@ class Game {
   final DateTime lastMessageDate;
   final String lastMessage;
   final String colorCase;
+  final String role;
+  final String idCase;
   //User userOwner;
 
   Game({
     Key key,
-    @required this.active,
-    @required this.nameCase,
-    @required this.points,
-    @required this.caseGame,
-    @required this.lastMessageDate,
-    @required this.lastMessage,
-    @required this.colorCase,
-    //this.userOwner,
+    this.active,
+    this.nameCase,
+    this.points,
+    this.caseGame,
+    this.lastMessageDate,
+    this.lastMessage,
+    this.colorCase,
+    this.role,
+    this.idCase,
     this.id,
   });
 }

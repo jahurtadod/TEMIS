@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:temis/User/model/game.dart';
 
-class Role extends StatelessWidget {
+class RoleWidget extends StatelessWidget {
   var text = "";
   var icon = "";
+  Game game;
 
-  Role({this.icon, this.text});
+  RoleWidget({this.icon, this.text, this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,8 @@ class Role extends StatelessWidget {
                   color: Theme.of(context).colorScheme.primary,
                   icon: Icon(Icons.face, size: 40.0),
                   onPressed: () {
-                    Navigator.popAndPushNamed(context, 'chat');
+                    Navigator.of(context)
+                        .pushNamed('/startgame', arguments: game);
                   },
                 ),
                 Spacer(),

@@ -1,16 +1,20 @@
 class CaseModel {
+  String id;
   String description;
   String name;
+  String numberPossibleEndings;
   int pointsMax;
   int numberRoute;
   List<Route> route;
 
   CaseModel({
+    this.id,
     this.description,
     this.name,
     this.pointsMax,
     this.numberRoute,
     this.route,
+    this.numberPossibleEndings,
   });
 
   factory CaseModel.fromMap(Map<String, dynamic> json) => CaseModel(

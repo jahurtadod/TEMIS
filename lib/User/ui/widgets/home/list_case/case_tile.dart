@@ -103,7 +103,7 @@ class _CaseViewState extends State<CaseView> {
                               topLeft: Radius.circular(10.0),
                               topRight: Radius.circular(10.0),
                             ),
-                            child: SelectRole(),
+                            child: SelectRole(idCase: cases[index].id),
                           );
                         },
                       );

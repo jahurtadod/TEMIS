@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
@@ -19,11 +20,13 @@ class _StarGameState extends State<StarGame> {
           child: Container(
             padding: EdgeInsets.all(40),
             width: double.infinity,
-            child: StreamBuilder<CaseModel>(
-              stream: DatabaseService().dataCase(game.idCase),
+            child: StreamBuilder<List<RouteModel>>(
+              stream:
+                  DatabaseService().dataCaseRoute(game.caseGame.id, game.role),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
-                game.caseGame = snapshot.data;
+                //RouteModel route = snapshot.data;
                 if (snapshot.hasData) {
+                  game.caseGame.route = snapshot.data[0];
                   return SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -97,6 +100,8 @@ class _StarGameState extends State<StarGame> {
                     ),
                   );
                 } else {
+                  print("role ${game.role}");
+                  print(game.caseGame.id);
                   return Loading();
                 }
               },

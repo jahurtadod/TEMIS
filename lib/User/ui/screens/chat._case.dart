@@ -71,7 +71,7 @@ class _ChatCaseState extends State<ChatCase> {
               ),
               SizedBox(),
               Text(
-                "Description",
+                game.caseGame.route.id,
                 style: Theme.of(context).textTheme.subtitle,
               ),
               Spacer(),

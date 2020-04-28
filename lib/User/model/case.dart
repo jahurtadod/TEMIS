@@ -5,7 +5,7 @@ class CaseModel {
   String numberPossibleEndings;
   int pointsMax;
   int numberRoute;
-  List<Route> route;
+  RouteModel route;
 
   CaseModel({
     this.id,
@@ -22,7 +22,7 @@ class CaseModel {
         name: json["name"],
         pointsMax: json["pointsMax"],
         numberRoute: json["numberRoute"],
-        route: List<Route>.from(json["route"].map((x) => Route.fromMap(x))),
+
       );
 
   Map<String, dynamic> toMap() => {
@@ -30,24 +30,26 @@ class CaseModel {
         "name": name,
         "pointsMax": pointsMax,
         "numberRoute": numberRoute,
-        "route": List<dynamic>.from(route.map((x) => x.toMap())),
+
       };
 }
 
-class Route {
+class RouteModel {
+  String id;
   int numberPossibleEndings;
   int pointsMax;
   String role;
   List<Event> events;
 
-  Route({
+  RouteModel({
     this.numberPossibleEndings,
     this.pointsMax,
     this.role,
     this.events,
+    this.id,
   });
 
-  factory Route.fromMap(Map<String, dynamic> json) => Route(
+  factory RouteModel.fromMap(Map<String, dynamic> json) => RouteModel(
         numberPossibleEndings: json["numberPossibleEndings"],
         pointsMax: json["pointsMax"],
         role: json["role"],

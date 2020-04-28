@@ -90,21 +90,27 @@ class DatabaseService {
         name: doc.data["name"],
         pointsMax: doc.data["pointsMax"],
         numberRoute: doc.data["numberRoute"],
+        numberPossibleEndings: doc.data["numberPossibleEndings"],
       );
     }).toList();
   }
 
   // Stream Case from ID
-  Stream<CaseModel> dataCase(String id) {
-    return casesCollecction.document(id).snapshots().map(_caseDataFromSnapshot);
+  Stream<List<RouteModel>> dataCaseRoute(String id, String role) {
+    return casesCollecction
+        .document(id)
+        .collection('route')
+        .snapshots()
+        .map(_caseRouteFromSnapshot);
   }
 
   // UserData from snapshot
-  CaseModel _caseDataFromSnapshot(DocumentSnapshot snapshot) {
-    return CaseModel(
-      name: snapshot.data['name'],
-      description: snapshot.data['description'],
-      numberPossibleEndings: snapshot.data['numberPossibleEndings'],
-    );
+  List<RouteModel> _caseRouteFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return RouteModel(
+        id: doc.documentID,
+        numberPossibleEndings: doc.data["numberPossibleEndings"],
+      );
+    }).toList();
   }
 }

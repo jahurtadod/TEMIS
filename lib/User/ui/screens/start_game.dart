@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
@@ -100,8 +99,6 @@ class _StarGameState extends State<StarGame> {
                     ),
                   );
                 } else {
-                  print("role ${game.role}");
-                  print(game.caseGame.id);
                   return Loading();
                 }
               },

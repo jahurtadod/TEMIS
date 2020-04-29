@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           // primaryColor: Color(0xff7ec7d0),
           // accentColor: Color(0xff7ec7d0),
           // hintColor: Color(0xff7ec7d0),
-          buttonColor: Color(0xff7ec7d0),
+          buttonColor: Color(0xff00acc1),
           textTheme: textTheme,
         ),
         initialRoute: '/',

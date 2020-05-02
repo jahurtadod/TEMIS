@@ -25,7 +25,6 @@ class _StarGameState extends State<StarGame> {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 //RouteModel route = snapshot.data;
                 if (snapshot.hasData) {
-                  game.caseGame.route = snapshot.data[0];
                   return SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -87,8 +86,15 @@ class _StarGameState extends State<StarGame> {
                           width: double.infinity,
                           child: RaisedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacementNamed('chat',
-                                  arguments: game);
+                              if (snapshot.data.length != 0) {
+                                game.caseGame.route = snapshot.data[0];
+                                Navigator.of(context).pushReplacementNamed(
+                                    'chat',
+                                    arguments: game);
+                              } else {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('home');
+                              }
                             },
                             child: Text("Comenzar"),
                             //color: Color(0xff7ec7d0),

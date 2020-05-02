@@ -8,6 +8,7 @@ import 'package:temis/User/ui/screens/chat._case.dart';
 import 'package:temis/User/ui/screens/home.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/User/ui/screens/start_game.dart';
+import 'package:temis/User/ui/widgets/home/settings/settings.dart';
 import 'package:temis/wrapper.dart';
 
 import 'User/ui/screens/login_page.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
           'login_page': (_) => LoginPage(),
           'sign_in': (_) => SignIn(),
           'home': (_) => Home(),
-          'chat': (_) => ChatCase(),
+          'chat': (_) =>  ChatCase(),
           '/startgame': (_) => StarGame(),
         },
       ),

@@ -17,6 +17,9 @@ class DatabaseService {
   final CollectionReference casesCollecction =
       Firestore.instance.collection('cases');
 
+  final CollectionReference eventsCollecction =
+      Firestore.instance.collection('cases');
+
   //
   Future updateUserData(User user) async {
     return await usersCollecction.document(uid).setData({
@@ -100,6 +103,7 @@ class DatabaseService {
     return casesCollecction
         .document(id)
         .collection('route')
+        .where('role', isEqualTo: role)
         .snapshots()
         .map(_caseRouteFromSnapshot);
   }
@@ -110,6 +114,38 @@ class DatabaseService {
       return RouteModel(
         id: doc.documentID,
         numberPossibleEndings: doc.data["numberPossibleEndings"],
+        pointsMax: doc.data['pointsMax'],
+        role: doc.data['role'],
+        idFirstEvent: doc.data['idFirstEvent'],
+      );
+    }).toList();
+  }
+
+// Stream Case from ID
+  Stream<List<Event>> eventsRoute(String idCase, String idRoute) {
+    return casesCollecction
+        .document(idCase)
+        .collection('route/$idRoute/events')
+        .snapshots()
+        .map(_eventsRouteFromSnapshot);
+  }
+
+  // UserData from snapshot
+  List<Event> _eventsRouteFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Event(
+        id: doc.data['id'],
+        role: doc.data['role'],
+        text: doc.data['text'],
+        type: doc.data['type'],
+        sequence: List.from(doc.data['sequence'].map((doc) {
+          return Sequence(
+            next: doc['next'],
+            prev: doc['prev'],
+            points: doc['points'],
+            text: doc['text'],
+          );
+        }).toList()),
       );
     }).toList();
   }

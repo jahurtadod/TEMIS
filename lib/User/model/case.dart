@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class CaseModel {
   String id;
   String description;
@@ -22,7 +24,6 @@ class CaseModel {
         name: json["name"],
         pointsMax: json["pointsMax"],
         numberRoute: json["numberRoute"],
-
       );
 
   Map<String, dynamic> toMap() => {
@@ -30,7 +31,6 @@ class CaseModel {
         "name": name,
         "pointsMax": pointsMax,
         "numberRoute": numberRoute,
-
       };
 }
 
@@ -39,6 +39,7 @@ class RouteModel {
   int numberPossibleEndings;
   int pointsMax;
   String role;
+  String idFirstEvent;
   List<Event> events;
 
   RouteModel({
@@ -46,6 +47,7 @@ class RouteModel {
     this.pointsMax,
     this.role,
     this.events,
+    this.idFirstEvent,
     this.id,
   });
 
@@ -65,12 +67,14 @@ class RouteModel {
 }
 
 class Event {
+  String id;
   String role;
   String text;
   String type;
   List<Sequence> sequence;
 
   Event({
+    this.id,
     this.role,
     this.text,
     this.type,
@@ -94,8 +98,8 @@ class Event {
 }
 
 class Sequence {
-  String prev;
-  String next;
+  DocumentReference prev;
+  DocumentReference next;
   String text;
   int points;
 
@@ -106,12 +110,11 @@ class Sequence {
     this.points,
   });
 
-  factory Sequence.fromMap(Map<String, dynamic> json) => Sequence(
-        prev: json["prev"],
-        next: json["next"],
-        text: json["text"],
-        points: json["points"],
-      );
+  Sequence.fromMap(Map<String, dynamic> data)
+      : prev = data["prev"],
+        next = data["next"],
+        text = data["text"],
+        points = data["points"];
 
   Map<String, dynamic> toMap() => {
         "prev": prev,

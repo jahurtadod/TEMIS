@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
+import 'package:temis/User/repository/database_firestore.dart';
 import 'package:temis/User/ui/widgets/chat/bubble_chat.dart';
 import 'package:temis/User/ui/widgets/chat/nav_bar_chat.dart';
 import 'package:temis/User/ui/widgets/chat/write_message.dart';
+import 'package:temis/widgets/loading.dart';
 
 class ChatCase extends StatefulWidget {
   @override
@@ -11,58 +14,196 @@ class ChatCase extends StatefulWidget {
 
 class _ChatCaseState extends State<ChatCase> {
   List<BubbleChat> _message = <BubbleChat>[];
+  String _idEventTemp;
+  // Prueba
+  // bool star = true;
+  // bool stop = true;
+  // String time = "00:00:00";
+  // var swacth = Stopwatch();
+  // final dur = const Duration(seconds: 1);
+
+  // void startTimer() {
+  //   Timer(dur, keeprunning);
+  // }
+
+  // void keeprunning() {
+  //   if (swacth.isRunning) {
+  //     startTimer();
+  //     BubbleChat message = BubbleChat(
+  //       message: "tempText",
+  //       isMe: false,
+  //       role: "defensa",
+  //     );
+  //     setState(() {
+  //       _message.insert(0, message);
+  //     });
+  //   }
+  //   setState(() {
+  //     time = swacth.elapsed.inHours.toString().padLeft(2, "0") +
+  //         ":" +
+  //         (swacth.elapsed.inMinutes % 60).toString().padLeft(2, "0") +
+  //         ":" +
+  //         (swacth.elapsed.inSeconds % 60).toString().padLeft(2, "0");
+  //   });
+  // }
+
+  // void starGame() {
+  //   setState(() {
+  //     stop = false;
+  //   });
+  //   swacth.start();
+  //   startTimer();
+  // }
+
+  // void stopGame() {
+  //   setState(() {
+  //     stop = true;
+  //   });
+  //   swacth.stop();
+  // }
+
+  // @override
+  // void initState() {
+  //   // _idEventTemp = game.caseGame.route.idFirstEvent;
+  //   super.initState();
+  // }
+
+  // @override
+  // void dispose() {
+  //   swacth.stop();
+  //   stop = true;
+  //   super.dispose();
+  //   print('dispose');
+  // }
+
+  // @override
+  // void deactivate() {
+  //   super.deactivate();
+  //   stop = true;
+  //   swacth.stop();
+  //   this method not called when user press android back button or quit
+  //   print('deactivate');
+  // }
+
+  void _createBubbleChat(String tempText, String tempRole, bool isMe) {
+    setState(() {
+      _message.insert(
+          0,
+          BubbleChat(
+            message: tempText,
+            isMe: isMe,
+            role: tempRole,
+          ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Game game = ModalRoute.of(context).settings.arguments;
+    List<Event> events = <Event>[];
+    String _firstID = game.caseGame.route.idFirstEvent;
 
-    void _printMensaje(String tempText, String tempRole, bool isMe) {
-      BubbleChat message = BubbleChat(
-        message: tempText,
-        isMe: isMe,
-        role: tempRole,
-      );
-      setState(() {
-        _message.insert(0, message);
-      });
+    void selectEvent() {
+      if (_idEventTemp == null) {
+        _idEventTemp = _firstID;
+      }
+      var event = events.firstWhere((event) => event.id == _idEventTemp);
+      if (event.sequence.length > 1) {
+        print("opcion");
+      } else if (event.sequence.first.next == null) {
+        print("sentencia");
+      } else {
+        _createBubbleChat(
+            event.id, event.role, game.caseGame.route.role == event.role);
+        _idEventTemp = event.sequence.first.next.documentID;
+      }
     }
 
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.onBackground,
-        body: Container(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              NavBarChat(game: game),
-              Expanded(
-                child: Container(
-                  child: Scaffold(
-                    body: ListView.builder(
-                      itemCount: _message.length,
-                      reverse: true,
-                      itemBuilder: (context, int index) {
-                        return _message[index];
-                      },
-                      addAutomaticKeepAlives: true,
+        body: StreamBuilder<List<Event>>(
+          stream: DatabaseService()
+              .eventsRoute(game.caseGame.id, game.caseGame.route.id),
+          builder: (context, snapshot) {
+            events = snapshot.data;
+            if (snapshot.hasData) {
+              return Container(
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    NavBarChat(game: game),
+                    Expanded(
+                      child: Container(
+                        child: ListView.builder(
+                          itemCount: _message.length,
+                          reverse: true,
+                          itemBuilder: (context, int index) {
+                            return _message[index];
+                          },
+                          addAutomaticKeepAlives: true,
+                        ),
+                        margin: EdgeInsets.only(bottom: 10),
+                      ),
                     ),
-                  ),
-                  margin: EdgeInsets.only(bottom: 10),
+                    Container(
+                      padding: EdgeInsets.only(right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          FlatButton(
+                            onPressed: () {
+                              selectEvent();
+                            },
+                            child: Text(
+                              "Continuar >>",
+                              style: Theme.of(context).textTheme.title.copyWith(
+                                    fontSize: 16,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    // Expanded(
+                    //   child: Container(
+                    //     alignment: Alignment.center,
+                    //     color: Colors.cyan,
+                    //     child: Text(time),
+                    //   ),
+                    // ),
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: 50),
+                    //   child: Row(
+                    //     crossAxisAlignment: CrossAxisAlignment.center,
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: <Widget>[
+                    //       RaisedButton(
+                    //         child: Text("start"),
+                    //         padding: EdgeInsets.all(0.0),
+                    //         onPressed: star ? starGame : null,
+                    //       ),
+                    //       RaisedButton(
+                    //         child: Text("stop"),
+                    //         padding: EdgeInsets.all(0.0),
+                    //         onPressed: stop ? null : stopGame,
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Spacer(),
+                    WriteMessage(),
+                  ],
                 ),
-              ),
-              RaisedButton(
-                child: Text("next"),
-                padding: EdgeInsets.all(0.0),
-                onPressed: () {
-                  _printMensaje("Hola ....", "defensa", false);
-                },
-              ),
-              // Spacer(),
-              WriteMessage(),
-            ],
-          ),
+              );
+            } else {
+              return Loading();
+            }
+          },
         ),
       ),
     );

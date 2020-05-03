@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/auth.dart';
+import 'package:temis/User/ui/screens/case_inactive.dart';
 import 'package:temis/User/ui/screens/chat._case.dart';
 import 'package:temis/User/ui/screens/home.dart';
+import 'package:temis/User/ui/screens/judgment.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/User/ui/screens/start_game.dart';
 import 'package:temis/User/ui/widgets/home/settings/settings.dart';
@@ -80,8 +82,10 @@ class MyApp extends StatelessWidget {
           'login_page': (_) => LoginPage(),
           'sign_in': (_) => SignIn(),
           'home': (_) => Home(),
-          'chat': (_) =>  ChatCase(),
+          'chat': (_) => ChatCase(),
           '/startgame': (_) => StarGame(),
+          '/error_case': (_) => CaseInactive(),
+          '/judgment': (_) => ScreenJudgment(),
         },
       ),
     );

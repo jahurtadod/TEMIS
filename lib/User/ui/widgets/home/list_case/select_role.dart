@@ -46,7 +46,7 @@ class _SelectRoleState extends State<SelectRole> {
               Spacer(),
               RoleWidget(
                 icon: "face",
-                text: "Fiscalia",
+                text: "Fiscalía",
                 game: Game(
                   caseGame: widget.caseGame,
                   role: Role().fiscalia,

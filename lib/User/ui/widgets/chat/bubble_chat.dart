@@ -6,82 +6,81 @@ class BubbleChat extends StatelessWidget {
   String role;
   // final String myRole;
 
-  //BubbleChat({this.message, this.isMe, this.role, this.myRole});
+  // BubbleChat({this.message, this.isMe, this.role, this.myRole});
   BubbleChat({this.isMe, this.message, this.role});
 
   Widget build(BuildContext context) {
     return Container(
-      //: Colors.black,
-      padding: isMe ? EdgeInsets.only(left: 40) : EdgeInsets.only(right: 40),
+      padding: isMe ? EdgeInsets.only(left: 20) : EdgeInsets.only(right: 20),
       child: Column(
         children: <Widget>[
           Column(
-              mainAxisAlignment:
-                  isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
-              crossAxisAlignment:
-                  isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(left: 24, right: 24),
-                  padding: EdgeInsets.only(top: 5, left: 10, right: 10),
-                  child: Column(children: <Widget>[
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: isMe
-                            ? MainAxisAlignment.end
-                            : MainAxisAlignment.start,
-                        children: <Widget>[
-                          isMe
-                              ? Container(
-                                  width: 60,
-                                )
-                              : Container(
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
-                                    child: _avatar(
-                                      this.role,
+            mainAxisAlignment:
+                isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+            crossAxisAlignment:
+                isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                child: Column(children: <Widget>[
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: isMe
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.start,
+                      children: <Widget>[
+                        // isMe
+                        //     ? Container(
+                        //         width: 10,
+                        //       )
+                        //     : Container(
+                        //         child: Padding(
+                        //           padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
+                        //           child: _avatar(
+                        //             this.role,
+                        //           ),
+                        //         ),
+                        //       ),
+                        Flexible(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color:
+                                  isMe ? Color(0xFFFFF7E4) : Color(0xFFE5F4F9),
+                              borderRadius: isMe
+                                  ? BorderRadius.only(
+                                      topRight: Radius.circular(15),
+                                      topLeft: Radius.circular(15),
+                                      bottomRight: Radius.circular(0),
+                                      bottomLeft: Radius.circular(15),
+                                    )
+                                  : BorderRadius.only(
+                                      topRight: Radius.circular(15),
+                                      topLeft: Radius.circular(15),
+                                      bottomRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(0),
                                     ),
-                                  ),
-                                ),
-                          Flexible(
+                            ),
                             child: Container(
-                                decoration: BoxDecoration(
-                                  color: isMe
-                                      ? Color(0xFFFFF7E4)
-                                      : Color(0xFFE5F4F9),
-                                  borderRadius: isMe
-                                      ? BorderRadius.only(
-                                          topRight: Radius.circular(15),
-                                          topLeft: Radius.circular(15),
-                                          bottomRight: Radius.circular(0),
-                                          bottomLeft: Radius.circular(15),
-                                        )
-                                      : BorderRadius.only(
-                                          topRight: Radius.circular(15),
-                                          topLeft: Radius.circular(15),
-                                          bottomRight: Radius.circular(15),
-                                          bottomLeft: Radius.circular(0),
-                                        ),
+                              padding: EdgeInsets.fromLTRB(16, 8, 12, 8),
+                              child: Text(
+                                message,
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  // color: IndevColors.black,
+                                  fontSize: 16,
+                                  fontFamily: 'Roboto',
                                 ),
-                                child: Container(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      message,
-                                      textAlign: isMe
-                                          ? TextAlign.end
-                                          : TextAlign.start,
-                                      style: TextStyle(
-                                        // color: IndevColors.black,
-                                        fontSize: 16,
-                                        fontFamily: 'Roboto',
-                                      ),
-                                    ))),
+                              ),
+                            ),
                           ),
-                        ]),
-                    Container(), //hora y fecha
-                  ]),
-                ),
-              ])
+                        ),
+                      ]),
+                  Container(), //hora y fecha
+                ]),
+              ),
+            ],
+          )
         ],
       ),
     );
@@ -139,7 +138,7 @@ class BubbleChat extends StatelessWidget {
         color = Color(0xFF7DB1FD);
         break;
       case "juez":
-        // color = IndevColors.pink;
+        color = Color(0xFF7FF100);
         break;
       case "secretario":
         color = Color(0xFF8D88CE);

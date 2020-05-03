@@ -4,7 +4,7 @@ import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/database_firestore.dart';
-import 'package:temis/User/ui/widgets/home/cases_actives/list_case_active.dart';
+import 'package:temis/User/ui/widgets/home/games_actives/list_case_active.dart';
 import 'package:temis/User/ui/widgets/home/list_case/list_case.dart';
 import 'package:temis/User/ui/widgets/home/name_user.dart';
 import 'package:temis/widgets/loading.dart';

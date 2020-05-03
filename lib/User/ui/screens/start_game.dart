@@ -34,7 +34,6 @@ class _StarGameState extends State<StarGame> {
                           //width: double.infinity,
                           child: Text(
                             game.caseGame.name,
-                            textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.title,
                           ),
                         ),
@@ -93,7 +92,7 @@ class _StarGameState extends State<StarGame> {
                                     arguments: game);
                               } else {
                                 Navigator.of(context)
-                                    .pushReplacementNamed('home');
+                                    .pushReplacementNamed('/error_case');
                               }
                             },
                             child: Text("Comenzar"),

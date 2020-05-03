@@ -6,6 +6,7 @@ import 'package:temis/User/ui/widgets/chat/bubble_chat.dart';
 import 'package:temis/User/ui/widgets/chat/nav_bar_chat.dart';
 import 'package:temis/User/ui/widgets/chat/write_message.dart';
 import 'package:temis/widgets/loading.dart';
+import 'package:temis/widgets/loading_message.dart';
 
 class ChatCase extends StatefulWidget {
   @override
@@ -15,6 +16,10 @@ class ChatCase extends StatefulWidget {
 class _ChatCaseState extends State<ChatCase> {
   List<BubbleChat> _message = <BubbleChat>[];
   String _idEventTemp;
+  bool optionActive = false;
+  bool load = false;
+  Event eventTempOptions;
+
   // Prueba
   // bool star = true;
   // bool stop = true;
@@ -62,11 +67,11 @@ class _ChatCaseState extends State<ChatCase> {
   //   swacth.stop();
   // }
 
-  // @override
-  // void initState() {
-  //   // _idEventTemp = game.caseGame.route.idFirstEvent;
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    // _idEventTemp = game.caseGame.route.idFirstEvent;
+    super.initState();
+  }
 
   // @override
   // void dispose() {
@@ -85,7 +90,33 @@ class _ChatCaseState extends State<ChatCase> {
   //   print('deactivate');
   // }
 
+  void _createOptionChat(Event event) {
+    setState(() {
+      eventTempOptions = event;
+      optionActive = optionActive ? false : true;
+    });
+    print(optionActive);
+  }
+
   void _createBubbleChat(String tempText, String tempRole, bool isMe) {
+    setState(() {
+      load = true;
+    });
+    Future.delayed(Duration(seconds: 3), () async {}).whenComplete(() {
+      setState(() {
+        load = false;
+        _message.insert(
+            0,
+            BubbleChat(
+              message: tempText,
+              isMe: isMe,
+              role: tempRole,
+            ));
+      });
+    });
+  }
+
+  void _createBubbleChatOption(String tempText, String tempRole, bool isMe) {
     setState(() {
       _message.insert(
           0,
@@ -108,14 +139,24 @@ class _ChatCaseState extends State<ChatCase> {
         _idEventTemp = _firstID;
       }
       var event = events.firstWhere((event) => event.id == _idEventTemp);
-      if (event.sequence.length > 1) {
-        print("opcion");
-      } else if (event.sequence.first.next == null) {
-        print("sentencia");
-      } else {
-        _createBubbleChat(
-            event.id, event.role, game.caseGame.route.role == event.role);
-        _idEventTemp = event.sequence.first.next.documentID;
+      print(event.type);
+      switch (event.type) {
+        case "DIALOGUE":
+          _createBubbleChat(
+              event.text, event.role, game.caseGame.route.role == event.role);
+          _idEventTemp = event.sequence.first.next.documentID;
+          print(_idEventTemp);
+          break;
+        case "OPTION":
+          print("opcion");
+          _createOptionChat(event);
+          print(_idEventTemp);
+          break;
+        case "JUDGMENT":
+          Navigator.of(context)
+              .pushReplacementNamed('/judgment', arguments: event);
+          print("sentencia");
+          break;
       }
     }
 
@@ -148,6 +189,7 @@ class _ChatCaseState extends State<ChatCase> {
                         margin: EdgeInsets.only(bottom: 10),
                       ),
                     ),
+                    load ? LoadingMessage() : Container(),
                     Container(
                       padding: EdgeInsets.only(right: 5),
                       child: Row(
@@ -169,6 +211,19 @@ class _ChatCaseState extends State<ChatCase> {
                         ],
                       ),
                     ),
+                    optionActive
+                        ? WriteMessage(
+                            options: eventTempOptions.sequence,
+                            onSelectOption: (newId, newText) {
+                              _createBubbleChatOption(
+                                  newText, game.caseGame.route.role, true);
+                              setState(() {
+                                _idEventTemp = newId;
+                              });
+                              selectEvent();
+                            },
+                          )
+                        : Container(),
                     // Expanded(
                     //   child: Container(
                     //     alignment: Alignment.center,
@@ -196,7 +251,6 @@ class _ChatCaseState extends State<ChatCase> {
                     //   ),
                     // ),
                     // Spacer(),
-                    WriteMessage(),
                   ],
                 ),
               );

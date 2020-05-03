@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/game.dart';
-import 'package:temis/User/ui/widgets/home/cases_actives/game_tile.dart';
+import 'package:temis/User/ui/widgets/home/games_actives/game_tile.dart';
 
 class ListCaseActive extends StatefulWidget {
   @override

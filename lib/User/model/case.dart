@@ -71,6 +71,7 @@ class Event {
   String role;
   String text;
   String type;
+  int numberEnding;
   List<Sequence> sequence;
 
   Event({
@@ -79,6 +80,7 @@ class Event {
     this.text,
     this.type,
     this.sequence,
+    this.numberEnding,
   });
 
   factory Event.fromMap(Map<String, dynamic> json) => Event(

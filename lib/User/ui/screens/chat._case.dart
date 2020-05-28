@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/case.dart';
@@ -106,7 +108,8 @@ class _ChatCaseState extends State<ChatCase> {
       load = true;
     });
 
-    Future.delayed(Duration(seconds: 3), () async {}).whenComplete(() {
+    Future.delayed(Duration(seconds: Random().nextInt(4)), () async {})
+        .whenComplete(() {
       setState(() {
         load = false;
         _message.insert(
@@ -149,6 +152,7 @@ class _ChatCaseState extends State<ChatCase> {
       }
       var event = events.firstWhere((event) => event.id == _idEventTemp);
       print(event.type);
+      print("Final: ${event.numberEnding}");
       switch (event.type) {
         case "DIALOGUE":
           _createBubbleChat(
@@ -164,9 +168,10 @@ class _ChatCaseState extends State<ChatCase> {
         case "JUDGMENT":
           _updatePoints();
           print("Validar Points");
-
+          game.judgment = event;
+          game.points = pointsCase;
           Navigator.of(context)
-              .pushReplacementNamed('/judgment', arguments: event);
+              .pushReplacementNamed('/judgment', arguments: game);
           print("sentencia");
           break;
       }

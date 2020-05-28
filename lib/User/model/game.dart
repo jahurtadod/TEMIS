@@ -5,13 +5,14 @@ class Game {
   final String id;
   final bool active;
   final String nameCase;
-  final int points;
+  int points;
   CaseModel caseGame;
   final DateTime lastMessageDate;
   final String lastMessage;
   final String colorCase;
   final String role;
   final String idCase;
+  Event judgment;
   //User userOwner;
 
   Game({
@@ -26,5 +27,6 @@ class Game {
     this.role,
     this.idCase,
     this.id,
+    this.judgment,
   });
 }

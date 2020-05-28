@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temis/User/model/case.dart';
+import 'package:temis/User/model/game.dart';
 
 class ScreenJudgment extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class ScreenJudgment extends StatefulWidget {
 class _ScreenJudgmentState extends State<ScreenJudgment> {
   @override
   Widget build(BuildContext context) {
-    Event event = ModalRoute.of(context).settings.arguments;
+    Game game = ModalRoute.of(context).settings.arguments;
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -39,7 +40,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                     height: 20,
                   ),
                   Text(
-                    event.text,
+                    game.judgment.text,
                     style: Theme.of(context).textTheme.subtitle,
                   ),
                   SizedBox(
@@ -56,7 +57,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
                         TextSpan(
-                          text: "100 / 300",
+                          text: "${game.points} / ${game.caseGame.route.pointsMax}",
                         )
                       ],
                     ),
@@ -75,7 +76,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
                         TextSpan(
-                          text: "2 / 3",
+                          text: "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings}",
                         )
                       ],
                     ),

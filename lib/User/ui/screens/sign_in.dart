@@ -78,16 +78,16 @@ class _SignInState extends State<SignIn> {
                         // validate that the name is not null
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
-                          Future.delayed(Duration(seconds: 5), () async {
-                            dynamic result = await _auth.signInAnon(
-                                User(uid: null, name: _controller.text));
-                            if (result == null) {
-                              setState(() => loading = false);
-                              print("Error Signing In");
-                            } else {
-                              print("Sign In ${result.uid}");
-                            }
-                          });
+                          // Future.delayed(Duration(seconds: 5), () async {
+                          dynamic result = await _auth.signInAnon(
+                              User(uid: null, name: _controller.text));
+                          if (result == null) {
+                            setState(() => loading = false);
+                            print("Error Signing In");
+                          } else {
+                            print("Sign In ${result.uid}");
+                          }
+                          // });
                         }
                       },
                       child: Text("Comenzar"),

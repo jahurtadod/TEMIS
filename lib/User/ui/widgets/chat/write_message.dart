@@ -5,7 +5,7 @@ import 'package:temis/User/ui/widgets/chat/option_tile.dart';
 
 class WriteMessage extends StatefulWidget {
   final List<Sequence> options;
-  final Function(String _idTempEvent, String newText) onSelectOption;
+  final Function(String _idTempEvent, String newText, int points) onSelectOption;
 
   const WriteMessage({this.options, this.onSelectOption});
 
@@ -108,9 +108,9 @@ class _WriteMessageState extends State<WriteMessage> {
                         child: OptionTile(
                           sequence: widget.options[index],
                           index: index,
-                          onSelectOption: (newData, newText) {
+                          onSelectOption: (newData, newText, points) {
                             setState(() {
-                              widget.onSelectOption(newData, newText);
+                              widget.onSelectOption(newData, newText, points);
                               _pc.close();
                             });
                           },

@@ -10,7 +10,6 @@ import 'package:temis/User/ui/screens/home.dart';
 import 'package:temis/User/ui/screens/judgment.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/User/ui/screens/start_game.dart';
-import 'package:temis/User/ui/widgets/home/settings/settings.dart';
 import 'package:temis/wrapper.dart';
 
 import 'User/ui/screens/login_page.dart';

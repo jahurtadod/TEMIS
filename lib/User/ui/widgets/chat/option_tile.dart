@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temis/User/model/case.dart';
 
 class OptionTile extends StatelessWidget {
-  final Function(String _idTempEvent, String newText) onSelectOption;
+  final Function(String _idTempEvent, String newText, int points) onSelectOption;
   final Sequence sequence;
   final int index;
 
@@ -12,8 +12,8 @@ class OptionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("1 Print ${sequence.next.documentID} + $index");
-        onSelectOption(sequence.next.documentID, sequence.text);
+        print("1 Print ${sequence.next.documentID} + $index + ${sequence.points}");
+        onSelectOption(sequence.next.documentID, sequence.text, sequence.points);
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

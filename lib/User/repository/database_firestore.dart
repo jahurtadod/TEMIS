@@ -130,7 +130,7 @@ class DatabaseService {
         .map(_eventsRouteFromSnapshot);
   }
 
-  // UserData from snapshot
+  // CaseRoute from snapshot
   List<Event> _eventsRouteFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Event(
@@ -148,5 +148,12 @@ class DatabaseService {
         }).toList()),
       );
     }).toList();
+  }
+
+  //Update Points
+  Future updateUserPoints(int points) async {
+    return await usersCollecction
+        .document(uid)
+        .updateData({'points': FieldValue.increment(points)});
   }
 }

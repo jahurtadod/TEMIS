@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
+import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/database_firestore.dart';
 import 'package:temis/User/ui/widgets/chat/bubble_chat.dart';
 import 'package:temis/User/ui/widgets/chat/nav_bar_chat.dart';
@@ -19,9 +21,10 @@ class _ChatCaseState extends State<ChatCase> {
   bool optionActive = false;
   bool load = false;
   Event eventTempOptions;
+  int pointsCase = 0;
 
   // Prueba
-  // bool star = true;
+  bool star = true;
   // bool stop = true;
   // String time = "00:00:00";
   // var swacth = Stopwatch();
@@ -102,6 +105,7 @@ class _ChatCaseState extends State<ChatCase> {
     setState(() {
       load = true;
     });
+
     Future.delayed(Duration(seconds: 3), () async {}).whenComplete(() {
       setState(() {
         load = false;
@@ -133,6 +137,11 @@ class _ChatCaseState extends State<ChatCase> {
     Game game = ModalRoute.of(context).settings.arguments;
     List<Event> events = <Event>[];
     String _firstID = game.caseGame.route.idFirstEvent;
+    final user = Provider.of<User>(context);
+
+    void _updatePoints() async {
+      await DatabaseService(uid: user.uid).updateUserPoints(pointsCase);
+    }
 
     void selectEvent() {
       if (_idEventTemp == null) {
@@ -153,6 +162,9 @@ class _ChatCaseState extends State<ChatCase> {
           print(_idEventTemp);
           break;
         case "JUDGMENT":
+          _updatePoints();
+          print("Validar Points");
+
           Navigator.of(context)
               .pushReplacementNamed('/judgment', arguments: event);
           print("sentencia");
@@ -190,35 +202,43 @@ class _ChatCaseState extends State<ChatCase> {
                       ),
                     ),
                     load ? LoadingMessage() : Container(),
-                    Container(
-                      padding: EdgeInsets.only(right: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          FlatButton(
-                            onPressed: () {
-                              selectEvent();
-                            },
-                            child: Text(
-                              "Continuar >>",
-                              style: Theme.of(context).textTheme.title.copyWith(
-                                    fontSize: 16,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                    optionActive
+                        ? Container()
+                        : Container(
+                            padding: EdgeInsets.only(right: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                FlatButton(
+                                  onPressed: () {
+                                    selectEvent();
+                                  },
+                                  child: Text(
+                                    "Siguiente >>",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .title
+                                        .copyWith(
+                                          fontSize: 16,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
                                   ),
+                                )
+                              ],
                             ),
-                          )
-                        ],
-                      ),
-                    ),
+                          ),
                     optionActive
                         ? WriteMessage(
                             options: eventTempOptions.sequence,
-                            onSelectOption: (newId, newText) {
+                            onSelectOption: (newId, newText, points) {
                               _createBubbleChatOption(
                                   newText, game.caseGame.route.role, true);
                               setState(() {
+                                optionActive = false;
                                 _idEventTemp = newId;
+                                pointsCase += points;
                               });
                               selectEvent();
                             },

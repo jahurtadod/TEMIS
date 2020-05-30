@@ -12,12 +12,9 @@ import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/User/ui/screens/start_game.dart';
 import 'package:temis/wrapper.dart';
 
-import 'User/ui/screens/login_page.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = ColorScheme.dark(
@@ -40,7 +37,7 @@ class MyApp extends StatelessWidget {
     final TextTheme textTheme = TextTheme(
       title: GoogleFonts.comfortaa(
         color: Color(0xff0C0A12),
-        fontSize: 28,
+        fontSize: 24,
       ),
       subtitle: GoogleFonts.roboto(
         color: Color(0xffA5A5A7),
@@ -67,21 +64,15 @@ class MyApp extends StatelessWidget {
         title: 'TEMIS',
         theme: ThemeData(
           colorScheme: colorScheme,
-          //bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.black),
-
-          // primaryColor: Color(0xff7ec7d0),
-          // accentColor: Color(0xff7ec7d0),
-          // hintColor: Color(0xff7ec7d0),
           buttonColor: Color(0xff00acc1),
           textTheme: textTheme,
         ),
         initialRoute: '/',
         routes: {
           '/': (_) => Wrapper(),
-          'login_page': (_) => LoginPage(),
-          'sign_in': (_) => SignIn(),
-          'home': (_) => Home(),
-          'chat': (_) => ChatCase(),
+          '/sign_in': (_) => SignIn(),
+          '/home': (_) => Home(),
+          '/chat': (_) => ChatCase(),
           '/startgame': (_) => StarGame(),
           '/error_case': (_) => CaseInactive(),
           '/judgment': (_) => ScreenJudgment(),

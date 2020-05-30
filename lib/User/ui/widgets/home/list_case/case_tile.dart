@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:temis/User/model/case.dart';
 import 'package:temis/User/ui/widgets/home/list_case/select_role.dart';
-import 'package:temis/User/ui/widgets/home/settings/settings_profile.dart';
 
 class CaseView extends StatefulWidget {
   @override
@@ -72,12 +72,20 @@ class _CaseViewState extends State<CaseView> {
                   ],
                 ),
               ),
-              Positioned(
-                bottom: 32,
-                right: 24,
-                child: Container(
-                  height: 172,
-                  child: Image.asset('assets/imageCase2.png'),
+              Center(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxHeight > 200) {
+                      return Container(
+                        height: 180,
+                        child: Image.asset('assets/${cases[index].img}.png'),
+                      );
+                    } else {
+                      return Container(
+                        width: 0,
+                      );
+                    }
+                  },
                 ),
               ),
               Positioned(
@@ -93,6 +101,7 @@ class _CaseViewState extends State<CaseView> {
                   ),
                   child: RaisedButton(
                     onPressed: () {
+                      // Select Roles
                       showModalBottomSheet(
                         backgroundColor: Colors.black12,
                         isScrollControlled: true,
@@ -108,7 +117,6 @@ class _CaseViewState extends State<CaseView> {
                         },
                       );
                     },
-                    //color: Color(0xff7ec7d0),
                     color: Theme.of(context).colorScheme.secondary,
                     child: Text(
                       "Comenzar aventura",
@@ -131,15 +139,16 @@ class _CaseViewState extends State<CaseView> {
                     Text(
                       "${cases[index].name}",
                       style: Theme.of(context).textTheme.title.copyWith(
-                            fontSize: 16,
+                            fontSize: 18,
                             color: Theme.of(context).colorScheme.onSecondary,
                           ),
                     ),
                     Row(
                       children: <Widget>[
                         Text(
-                          "Score: ${cases[index].pointsMax}",
+                          "\nScore: ${cases[index].pointsMax}",
                           style: Theme.of(context).textTheme.subtitle.copyWith(
+                                fontSize: 16,
                                 color:
                                     Theme.of(context).colorScheme.onSecondary,
                               ),

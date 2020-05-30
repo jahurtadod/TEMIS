@@ -5,7 +5,8 @@ import 'package:temis/User/ui/widgets/chat/option_tile.dart';
 
 class WriteMessage extends StatefulWidget {
   final List<Sequence> options;
-  final Function(String _idTempEvent, String newText, int points) onSelectOption;
+  final Function(String _idTempEvent, String newText, int points)
+      onSelectOption;
 
   const WriteMessage({this.options, this.onSelectOption});
 
@@ -22,6 +23,7 @@ class _WriteMessageState extends State<WriteMessage> {
       children: <Widget>[
         GestureDetector(
           onTap: () {
+            // Open Animation
             _pc.open();
           },
           child: Container(
@@ -34,7 +36,6 @@ class _WriteMessageState extends State<WriteMessage> {
               color: Theme.of(context).colorScheme.primary,
             ),
             width: double.infinity,
-            // height: 50,
             child: Column(
               children: <Widget>[
                 Row(
@@ -110,7 +111,9 @@ class _WriteMessageState extends State<WriteMessage> {
                           index: index,
                           onSelectOption: (newData, newText, points) {
                             setState(() {
+                              // Returns the values of the option
                               widget.onSelectOption(newData, newText, points);
+                              // Close Animation
                               _pc.close();
                             });
                           },

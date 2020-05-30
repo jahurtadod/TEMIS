@@ -4,7 +4,6 @@ class BubbleChat extends StatelessWidget {
   final bool isMe;
   final String message;
   String role;
-  // final String myRole;
 
   // BubbleChat({this.message, this.isMe, this.role, this.myRole});
   BubbleChat({this.isMe, this.message, this.role});
@@ -30,18 +29,6 @@ class BubbleChat extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: <Widget>[
-                        // isMe
-                        //     ? Container(
-                        //         width: 10,
-                        //       )
-                        //     : Container(
-                        //         child: Padding(
-                        //           padding: EdgeInsets.fromLTRB(5, 0, 10, 0),
-                        //           child: _avatar(
-                        //             this.role,
-                        //           ),
-                        //         ),
-                        //       ),
                         Flexible(
                           child: Container(
                             decoration: BoxDecoration(
@@ -76,7 +63,6 @@ class BubbleChat extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  Container(), //hora y fecha
                 ]),
               ),
             ],
@@ -85,50 +71,6 @@ class BubbleChat extends StatelessWidget {
       ),
     );
   }
-
-  Widget _avatar(String role) {
-    return Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(
-        color: _selectColor(role),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      padding: EdgeInsets.all(6),
-      // child: _selectAvatar(role,
-      //     height: 30,
-      //     width: SizeConfig.blockSizeHorizontal * 100),
-    );
-  }
-
-  // SvgPicture _selectAvatar(String iconRol,
-  //     {Color color, double height, double width}) {
-  //   var icon;
-  //   print("avatar: $iconRol");
-  //   switch (iconRol.toLowerCase()) {
-  //     case "juez":
-  //       icon = SvgPicture.asset(
-  //         "assets/img/juez_color.svg",
-  //       );
-  //       break;
-  //     case "fiscalia":
-  //       icon = SvgPicture.asset(
-  //         "assets/img/fiscalia_color.svg",
-  //       );
-  //       break;
-  //     case "defensa":
-  //       icon = SvgPicture.asset(
-  //         "assets/img/abogado_color.svg",
-  //       );
-  //       break;
-  //     case "secretario":
-  //       icon = SvgPicture.asset(
-  //         "assets/img/mujer.svg",
-  //       );
-  //       break;
-  //   }
-  //   return icon;
-  // }
 
   Color _selectColor(String role) {
     var color;

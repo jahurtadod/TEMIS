@@ -20,7 +20,7 @@ class _SelectRoleState extends State<SelectRole> {
       color: Color(0xff292A2D),
       padding: EdgeInsets.symmetric(
         vertical: 30.0,
-        horizontal: 45.0,
+        horizontal: 35.0,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -36,7 +36,7 @@ class _SelectRoleState extends State<SelectRole> {
           Row(
             children: <Widget>[
               RoleWidget(
-                icon: "face",
+                icon: "juez",
                 text: "Juez",
                 game: Game(
                   caseGame: widget.caseGame,
@@ -45,7 +45,7 @@ class _SelectRoleState extends State<SelectRole> {
               ),
               Spacer(),
               RoleWidget(
-                icon: "face",
+                icon: "fiscalia",
                 text: "Fiscalía",
                 game: Game(
                   caseGame: widget.caseGame,
@@ -54,7 +54,7 @@ class _SelectRoleState extends State<SelectRole> {
               ),
               Spacer(),
               RoleWidget(
-                icon: "face",
+                icon: "abogado",
                 text: "Defensa",
                 game: Game(
                   caseGame: widget.caseGame,

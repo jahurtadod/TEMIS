@@ -41,6 +41,8 @@ class Profile extends StatelessWidget {
             ),
             title: Text(
               user.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.title.copyWith(
                     fontSize: 16,
                   ),

@@ -28,28 +28,29 @@ class _RoleWidgetState extends State<RoleWidget> {
                 Radius.circular(10.0),
               ),
             ),
-            child: Column(
-              children: <Widget>[
-                Spacer(),
-                IconButton(
-                  padding: EdgeInsets.all(0.0),
-                  color: Theme.of(context).colorScheme.primary,
-                  icon: Icon(Icons.face, size: 40.0),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .popAndPushNamed('/startgame', arguments: widget.game);
-                  },
-                ),
-                Spacer(),
-                Text(
-                  widget.text,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle
-                      .copyWith(color: Theme.of(context).colorScheme.primary),
-                ),
-                Spacer(),
-              ],
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .popAndPushNamed('/startgame', arguments: widget.game);
+              },
+              child: Column(
+                children: <Widget>[
+                  Spacer(),
+                  Container(
+                    height: 50,
+                    child: Image.asset('assets/${widget.icon}.png'),
+                  ),
+                  Spacer(),
+                  Text(
+                    widget.text,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
+                  ),
+                  Spacer(),
+                ],
+              ),
             ),
           ),
         ],

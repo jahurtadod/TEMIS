@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:temis/User/model/case.dart';
 import 'package:temis/User/model/game.dart';
 
 class ScreenJudgment extends StatefulWidget {
@@ -57,7 +56,8 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
                         TextSpan(
-                          text: "${game.points} / ${game.caseGame.route.pointsMax}",
+                          text:
+                              "${game.points} / ${game.caseGame.route.pointsMax}",
                         )
                       ],
                     ),
@@ -76,7 +76,8 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
                         TextSpan(
-                          text: "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings}",
+                          text:
+                              "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings}",
                         )
                       ],
                     ),

@@ -16,22 +16,21 @@ class _StarGameState extends State<StarGame> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Container(
-            padding: EdgeInsets.all(40),
-            width: double.infinity,
-            child: StreamBuilder<List<RouteModel>>(
-              stream:
-                  DatabaseService().dataCaseRoute(game.caseGame.id, game.role),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                //RouteModel route = snapshot.data;
-                if (snapshot.hasData) {
-                  return SingleChildScrollView(
-                    child: Column(
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(40),
+              width: double.infinity,
+              child: StreamBuilder<List<RouteModel>>(
+                stream: DatabaseService()
+                    .dataCaseRoute(game.caseGame.id, game.role),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        // Show case info to chat
                         Container(
-                          //width: double.infinity,
                           child: Text(
                             game.caseGame.name,
                             style: Theme.of(context).textTheme.title,
@@ -81,32 +80,31 @@ class _StarGameState extends State<StarGame> {
                           height: 20,
                         ),
                         Container(
-                          // padding: EdgeInsets.symmetric(horizontal: 40),
                           width: double.infinity,
                           child: RaisedButton(
                             onPressed: () {
                               if (snapshot.data.length != 0) {
                                 game.caseGame.route = snapshot.data[0];
-                                Navigator.of(context).pushReplacementNamed(
-                                    'chat',
-                                    arguments: game);
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/chat',
+                                        // Send the case information to the chat
+                                        arguments: game);
                               } else {
                                 Navigator.of(context)
                                     .pushReplacementNamed('/error_case');
                               }
                             },
                             child: Text("Comenzar"),
-                            //color: Color(0xff7ec7d0),
                             shape: RoundedRectangleBorder(),
                           ),
                         ),
                       ],
-                    ),
-                  );
-                } else {
-                  return Loading();
-                }
-              },
+                    );
+                  } else {
+                    return Loading();
+                  }
+                },
+              ),
             ),
           ),
         ),

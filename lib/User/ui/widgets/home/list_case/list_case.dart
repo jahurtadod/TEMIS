@@ -14,7 +14,7 @@ class CaseList extends StatelessWidget {
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Text(
-              "Comenzar nueva aventura",
+              "Selecciona nueva aventura",
               style: Theme.of(context).textTheme.subtitle,
             ),
           ),
@@ -22,7 +22,7 @@ class CaseList extends StatelessWidget {
             height: 8,
           ),
           Expanded(
-            child: CaseView(),
+            child: CaseView(), // Case
           ),
         ],
       ),

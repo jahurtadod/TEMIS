@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temis/User/ui/widgets/home/settings/settings_profile.dart';
+import 'package:temis/User/ui/widgets/home/profile/settings_profile.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

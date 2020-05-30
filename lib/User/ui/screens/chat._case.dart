@@ -19,81 +19,11 @@ class ChatCase extends StatefulWidget {
 
 class _ChatCaseState extends State<ChatCase> {
   List<BubbleChat> _message = <BubbleChat>[];
+  Event eventTempOptions;
   String _idEventTemp;
   bool optionActive = false;
   bool load = false;
-  Event eventTempOptions;
   int pointsCase = 0;
-
-  // Prueba
-  bool star = true;
-  // bool stop = true;
-  // String time = "00:00:00";
-  // var swacth = Stopwatch();
-  // final dur = const Duration(seconds: 1);
-
-  // void startTimer() {
-  //   Timer(dur, keeprunning);
-  // }
-
-  // void keeprunning() {
-  //   if (swacth.isRunning) {
-  //     startTimer();
-  //     BubbleChat message = BubbleChat(
-  //       message: "tempText",
-  //       isMe: false,
-  //       role: "defensa",
-  //     );
-  //     setState(() {
-  //       _message.insert(0, message);
-  //     });
-  //   }
-  //   setState(() {
-  //     time = swacth.elapsed.inHours.toString().padLeft(2, "0") +
-  //         ":" +
-  //         (swacth.elapsed.inMinutes % 60).toString().padLeft(2, "0") +
-  //         ":" +
-  //         (swacth.elapsed.inSeconds % 60).toString().padLeft(2, "0");
-  //   });
-  // }
-
-  // void starGame() {
-  //   setState(() {
-  //     stop = false;
-  //   });
-  //   swacth.start();
-  //   startTimer();
-  // }
-
-  // void stopGame() {
-  //   setState(() {
-  //     stop = true;
-  //   });
-  //   swacth.stop();
-  // }
-
-  @override
-  void initState() {
-    // _idEventTemp = game.caseGame.route.idFirstEvent;
-    super.initState();
-  }
-
-  // @override
-  // void dispose() {
-  //   swacth.stop();
-  //   stop = true;
-  //   super.dispose();
-  //   print('dispose');
-  // }
-
-  // @override
-  // void deactivate() {
-  //   super.deactivate();
-  //   stop = true;
-  //   swacth.stop();
-  //   this method not called when user press android back button or quit
-  //   print('deactivate');
-  // }
 
   void _createOptionChat(Event event) {
     setState(() {
@@ -108,7 +38,10 @@ class _ChatCaseState extends State<ChatCase> {
       load = true;
     });
 
-    Future.delayed(Duration(seconds: Random().nextInt(4)), () async {})
+    Future.delayed(
+            Duration(
+                milliseconds: Random().nextInt(2000) + 500), // Animation Time
+            () async {})
         .whenComplete(() {
       setState(() {
         load = false;
@@ -193,6 +126,7 @@ class _ChatCaseState extends State<ChatCase> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     NavBarChat(game: game),
+                    // Show chat bubbles
                     Expanded(
                       child: Container(
                         child: ListView.builder(
@@ -234,6 +168,7 @@ class _ChatCaseState extends State<ChatCase> {
                               ],
                             ),
                           ),
+                    // Show the heading to select an option
                     optionActive
                         ? WriteMessage(
                             options: eventTempOptions.sequence,
@@ -249,33 +184,6 @@ class _ChatCaseState extends State<ChatCase> {
                             },
                           )
                         : Container(),
-                    // Expanded(
-                    //   child: Container(
-                    //     alignment: Alignment.center,
-                    //     color: Colors.cyan,
-                    //     child: Text(time),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   padding: EdgeInsets.symmetric(horizontal: 50),
-                    //   child: Row(
-                    //     crossAxisAlignment: CrossAxisAlignment.center,
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: <Widget>[
-                    //       RaisedButton(
-                    //         child: Text("start"),
-                    //         padding: EdgeInsets.all(0.0),
-                    //         onPressed: star ? starGame : null,
-                    //       ),
-                    //       RaisedButton(
-                    //         child: Text("stop"),
-                    //         padding: EdgeInsets.all(0.0),
-                    //         onPressed: stop ? null : stopGame,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Spacer(),
                   ],
                 ),
               );

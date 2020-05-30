@@ -20,12 +20,11 @@ class _CaseInactiveState extends State<CaseInactive> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(bottom: 25),
-                    child: Icon(
-                      Icons.bubble_chart,
-                      size: 100.0,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
+                    height: 120,
+                    child: Image.asset('assets/img0.png'),
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                   Container(
                     child: Text(
@@ -44,14 +43,12 @@ class _CaseInactiveState extends State<CaseInactive> {
                     height: 20,
                   ),
                   Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 40),
                     width: double.infinity,
                     child: RaisedButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
                       child: Text("Regresar"),
-                      //color: Color(0xff7ec7d0),
                       shape: RoundedRectangleBorder(),
                     ),
                   ),

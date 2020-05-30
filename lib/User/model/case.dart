@@ -8,6 +8,7 @@ class CaseModel {
   int pointsMax;
   int numberRoute;
   RouteModel route;
+  String img;
 
   CaseModel({
     this.id,
@@ -17,6 +18,7 @@ class CaseModel {
     this.numberRoute,
     this.route,
     this.numberPossibleEndings,
+    this.img,
   });
 
   factory CaseModel.fromMap(Map<String, dynamic> json) => CaseModel(

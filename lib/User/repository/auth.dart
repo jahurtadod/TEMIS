@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:temis/User/model/user.dart';
 import 'package:temis/User/repository/database_firestore.dart';
 

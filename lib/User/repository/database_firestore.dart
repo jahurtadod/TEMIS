@@ -94,6 +94,7 @@ class DatabaseService {
         pointsMax: doc.data["pointsMax"],
         numberRoute: doc.data["numberRoute"],
         numberPossibleEndings: doc.data["numberPossibleEndings"],
+        img: doc.data["img"],
       );
     }).toList();
   }
@@ -121,7 +122,7 @@ class DatabaseService {
     }).toList();
   }
 
-// Stream Case from ID
+  // Stream Case from ID
   Stream<List<Event>> eventsRoute(String idCase, String idRoute) {
     return casesCollecction
         .document(idCase)
@@ -151,10 +152,11 @@ class DatabaseService {
     }).toList();
   }
 
-  //Update Points
+  // Update Points
   Future updateUserPoints(int points) async {
-    return await usersCollecction
-        .document(uid)
-        .updateData({'points': FieldValue.increment(points)});
+    return await usersCollecction.document(uid).updateData({
+      'points': FieldValue.increment(points),
+      'numberGames': FieldValue.increment(1)
+    });
   }
 }

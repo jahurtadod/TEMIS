@@ -45,7 +45,7 @@ class _RoleWidgetState extends State<RoleWidget> {
                     widget.text,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle
+                        .subtitle1
                         .copyWith(color: Theme.of(context).colorScheme.primary),
                   ),
                   Spacer(),

@@ -33,7 +33,7 @@ class _StarGameState extends State<StarGame> {
                         Container(
                           child: Text(
                             game.caseGame.name,
-                            style: Theme.of(context).textTheme.title,
+                            style: Theme.of(context).textTheme.headline5,
                           ),
                         ),
                         SizedBox(
@@ -41,7 +41,7 @@ class _StarGameState extends State<StarGame> {
                         ),
                         Text(
                           "Antecedentes del Caso",
-                          style: Theme.of(context).textTheme.subtitle.copyWith(
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
                               color:
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
@@ -50,20 +50,20 @@ class _StarGameState extends State<StarGame> {
                         ),
                         Text(
                           game.caseGame.description,
-                          style: Theme.of(context).textTheme.subtitle,
+                          style: Theme.of(context).textTheme.subtitle1,
                         ),
                         SizedBox(
                           height: 20,
                         ),
                         RichText(
                           text: TextSpan(
-                            style: Theme.of(context).textTheme.subtitle,
+                            style: Theme.of(context).textTheme.subtitle1,
                             children: [
                               TextSpan(
                                 text: "Numero de finales posibles: ",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle
+                                    .subtitle1
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme

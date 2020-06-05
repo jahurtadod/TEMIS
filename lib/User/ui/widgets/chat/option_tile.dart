@@ -16,8 +16,13 @@ class OptionTile extends StatelessWidget {
         print(
             "1 Print ${sequence.next.documentID} + $index + ${sequence.points}");
         // Returns the values of the option
-        onSelectOption(
-            sequence.next.documentID, sequence.text, sequence.points);
+        if (sequence.points == null) {
+          // 
+          onSelectOption(sequence.next.documentID, sequence.text, 0);
+        } else {
+          onSelectOption(
+              sequence.next.documentID, sequence.text, sequence.points);
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +34,7 @@ class OptionTile extends StatelessWidget {
               child: Text(
                 "Opción ${index + 1}",
                 textAlign: TextAlign.end,
-                style: Theme.of(context).textTheme.display1.copyWith(
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
                       fontSize: 10,
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -50,7 +55,7 @@ class OptionTile extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     sequence.text,
-                    style: Theme.of(context).textTheme.display1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText1.copyWith(
                           color: Theme.of(context).colorScheme.onSecondary,
                         ),
                   ),

@@ -32,7 +32,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                   Container(
                     child: Text(
                       "SENTENCIA",
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
                   SizedBox(
@@ -40,18 +40,18 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                   ),
                   Text(
                     game.judgment.text,
-                    style: Theme.of(context).textTheme.subtitle,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   RichText(
                     text: TextSpan(
-                      style: Theme.of(context).textTheme.subtitle,
+                      style: Theme.of(context).textTheme.subtitle1,
                       children: [
                         TextSpan(
                           text: "Score: ",
-                          style: Theme.of(context).textTheme.subtitle.copyWith(
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
                               color:
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
@@ -67,11 +67,11 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                   ),
                   RichText(
                     text: TextSpan(
-                      style: Theme.of(context).textTheme.subtitle,
+                      style: Theme.of(context).textTheme.subtitle1,
                       children: [
                         TextSpan(
                           text: "Final: ",
-                          style: Theme.of(context).textTheme.subtitle.copyWith(
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
                               color:
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),

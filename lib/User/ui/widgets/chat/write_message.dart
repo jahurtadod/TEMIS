@@ -43,7 +43,7 @@ class _WriteMessageState extends State<WriteMessage> {
                   children: <Widget>[
                     Text(
                       "Tu elección . . .",
-                      style: Theme.of(context).textTheme.title.copyWith(
+                      style: Theme.of(context).textTheme.headline5.copyWith(
                             fontSize: 14,
                             color: Theme.of(context).colorScheme.onSecondary,
                           ),

@@ -28,7 +28,7 @@ class _SelectRoleState extends State<SelectRole> {
         children: <Widget>[
           Text(
             "Selecciona el rol a jugar",
-            style: Theme.of(context).textTheme.title.copyWith(
+            style: Theme.of(context).textTheme.headline5.copyWith(
                   fontSize: 16,
                   color: Theme.of(context).colorScheme.onSecondary,
                 ),

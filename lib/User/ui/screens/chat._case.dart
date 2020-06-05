@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class _ChatCaseState extends State<ChatCase> {
   Event eventTempOptions;
   String _idEventTemp;
   bool optionActive = false;
+  bool nextActive = false;
   bool load = false;
   int pointsCase = 0;
 
@@ -29,13 +31,16 @@ class _ChatCaseState extends State<ChatCase> {
     setState(() {
       eventTempOptions = event;
       optionActive = optionActive ? false : true;
+      nextActive = nextActive ? false : true;
     });
     print(optionActive);
+    print(nextActive);
   }
 
   void _createBubbleChat(String tempText, String tempRole, bool isMe) {
     setState(() {
       load = true;
+      nextActive = true;
     });
 
     Future.delayed(
@@ -45,12 +50,14 @@ class _ChatCaseState extends State<ChatCase> {
         .whenComplete(() {
       setState(() {
         load = false;
+        nextActive = false;
         _message.insert(
             0,
             BubbleChat(
               message: tempText,
               isMe: isMe,
               role: tempRole,
+              time: DateFormat.jm().format(DateTime.now()),
             ));
       });
     });
@@ -64,6 +71,7 @@ class _ChatCaseState extends State<ChatCase> {
             message: tempText,
             isMe: isMe,
             role: tempRole,
+            time: DateFormat.jm().format(DateTime.now()),
           ));
     });
   }
@@ -137,7 +145,7 @@ class _ChatCaseState extends State<ChatCase> {
                           },
                           addAutomaticKeepAlives: true,
                         ),
-                        margin: EdgeInsets.only(bottom: 10),
+                        margin: EdgeInsets.only(bottom: 16),
                       ),
                     ),
                     load ? LoadingMessage() : Container(),
@@ -152,18 +160,20 @@ class _ChatCaseState extends State<ChatCase> {
                                   onPressed: () {
                                     selectEvent();
                                   },
-                                  child: Text(
-                                    "Siguiente >>",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .title
-                                        .copyWith(
-                                          fontSize: 16,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
+                                  child: nextActive
+                                      ? Container()
+                                      : Text(
+                                          "Siguiente >>",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline5
+                                              .copyWith(
+                                                fontSize: 16,
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ),
                                         ),
-                                  ),
                                 )
                               ],
                             ),
@@ -177,6 +187,7 @@ class _ChatCaseState extends State<ChatCase> {
                                   newText, game.caseGame.route.role, true);
                               setState(() {
                                 optionActive = false;
+                                nextActive = false;
                                 _idEventTemp = newId;
                                 pointsCase += points;
                               });

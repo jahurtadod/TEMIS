@@ -29,7 +29,7 @@ class _CaseInactiveState extends State<CaseInactive> {
                   Container(
                     child: Text(
                       "Próximamente",
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
                   SizedBox(
@@ -37,7 +37,7 @@ class _CaseInactiveState extends State<CaseInactive> {
                   ),
                   Text(
                     "Este caso aún no se encuentra disponible, te avisaremos cunado esté disponible.",
-                    style: Theme.of(context).textTheme.subtitle,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
                     height: 20,

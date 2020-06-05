@@ -19,7 +19,7 @@ class _ListCaseActiveState extends State<ListCaseActive> {
         children: <Widget>[
           Text(
             "Continuar",
-            style: Theme.of(context).textTheme.subtitle,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
           SizedBox(
             height: 10,

@@ -120,7 +120,7 @@ class _CaseViewState extends State<CaseView> {
                     color: Theme.of(context).colorScheme.secondary,
                     child: Text(
                       "Comenzar aventura",
-                      style: Theme.of(context).textTheme.subtitle.copyWith(
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
                             fontSize: 14,
                             color: Theme.of(context).colorScheme.onSecondary,
                           ),
@@ -138,7 +138,7 @@ class _CaseViewState extends State<CaseView> {
                   children: <Widget>[
                     Text(
                       "${cases[index].name}",
-                      style: Theme.of(context).textTheme.title.copyWith(
+                      style: Theme.of(context).textTheme.headline5.copyWith(
                             fontSize: 18,
                             color: Theme.of(context).colorScheme.onSecondary,
                           ),
@@ -147,7 +147,7 @@ class _CaseViewState extends State<CaseView> {
                       children: <Widget>[
                         Text(
                           "\nScore: ${cases[index].pointsMax}",
-                          style: Theme.of(context).textTheme.subtitle.copyWith(
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
                                 fontSize: 16,
                                 color:
                                     Theme.of(context).colorScheme.onSecondary,

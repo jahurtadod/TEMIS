@@ -37,7 +37,7 @@ class _NameUserState extends State<NameUser> {
                       child: Text(
                         "Hola, $name",
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.title,
+                        style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
                     IconButton(
@@ -71,7 +71,7 @@ class _NameUserState extends State<NameUser> {
                 ),
                 Text(
                   "¿Estas listo para una nueva historia?",
-                  style: Theme.of(context).textTheme.subtitle,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ],
             ),

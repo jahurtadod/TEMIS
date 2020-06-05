@@ -31,13 +31,13 @@ class GameTile extends StatelessWidget {
         children: <Widget>[
           Text(
             game.nameCase,
-            style: Theme.of(context).textTheme.display1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
                   color: Theme.of(context).colorScheme.onSecondary,
                 ),
           ),
           Text(
             "17/02/2020",
-            style: Theme.of(context).textTheme.display1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
                   color: Theme.of(context).colorScheme.onSecondary,
                 ),
           ),
@@ -45,7 +45,7 @@ class GameTile extends StatelessWidget {
       ),
       subtitle: Text(
         game.lastMessage,
-        style: Theme.of(context).textTheme.display1.copyWith(
+        style: Theme.of(context).textTheme.bodyText1.copyWith(
               color: Theme.of(context).colorScheme.onSecondary,
             ),
       ),

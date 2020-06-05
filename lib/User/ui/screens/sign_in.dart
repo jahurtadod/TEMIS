@@ -42,14 +42,14 @@ class _SignInState extends State<SignIn> {
                   ),
                   Text(
                     "Bienvenido,\nEstas listo para esta nueva experiencia de aprendizaje.",
-                    style: Theme.of(context).textTheme.title,
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                   Spacer(
                     flex: 1,
                   ),
                   Text(
                     "Nombre del perfil",
-                    style: Theme.of(context).textTheme.subtitle,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   Form(
                     key: _formKey,

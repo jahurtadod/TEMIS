@@ -15,7 +15,7 @@ class CaseList extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 40),
             child: Text(
               "Selecciona nueva aventura",
-              style: Theme.of(context).textTheme.subtitle,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ),
           SizedBox(

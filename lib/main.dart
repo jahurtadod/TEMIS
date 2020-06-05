@@ -35,15 +35,15 @@ class MyApp extends StatelessWidget {
     );
 
     final TextTheme textTheme = TextTheme(
-      title: GoogleFonts.comfortaa(
+      headline5: GoogleFonts.comfortaa(
         color: Color(0xff0C0A12),
         fontSize: 24,
       ),
-      subtitle: GoogleFonts.roboto(
+      subtitle1: GoogleFonts.roboto(
         color: Color(0xffA5A5A7),
         fontSize: 16,
       ),
-      display1: GoogleFonts.roboto(
+      bodyText1: GoogleFonts.roboto(
         color: Color(0xff020202),
         fontSize: 12,
       ),

@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
             children: <Widget>[
               Text(
                 "TEMIS",
-                style: Theme.of(context).textTheme.title.copyWith(
+                style: Theme.of(context).textTheme.headline5.copyWith(
                     fontSize: 22, color: Theme.of(context).colorScheme.primary),
               ),
               IconButton(

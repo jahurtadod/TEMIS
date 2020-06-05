@@ -38,7 +38,7 @@ class NavBarChat extends StatelessWidget {
             ),
             RichText(
               text: TextSpan(
-                style: Theme.of(context).textTheme.title.copyWith(
+                style: Theme.of(context).textTheme.headline5.copyWith(
                       fontSize: size,
                       color: Color(0xff505050),
                     ),
@@ -46,7 +46,7 @@ class NavBarChat extends StatelessWidget {
                   TextSpan(text: game.caseGame.name),
                   TextSpan(
                     text: "  Online ... ",
-                    style: Theme.of(context).textTheme.subtitle.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1.copyWith(
                           fontSize: 8,
                           color: Color(0xff03A50E),
                         ),

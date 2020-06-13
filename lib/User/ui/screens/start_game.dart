@@ -30,11 +30,9 @@ class _StarGameState extends State<StarGame> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         // Show case info to chat
-                        Container(
-                          child: Text(
-                            game.caseGame.name,
-                            style: Theme.of(context).textTheme.headline5,
-                          ),
+                        Text(
+                          game.caseGame.name,
+                          style: Theme.of(context).textTheme.headline5,
                         ),
                         SizedBox(
                           height: 20,

@@ -10,6 +10,7 @@ import 'package:temis/User/ui/screens/home.dart';
 import 'package:temis/User/ui/screens/judgment.dart';
 import 'package:temis/User/ui/screens/sign_in.dart';
 import 'package:temis/User/ui/screens/start_game.dart';
+import 'package:temis/User/ui/screens/page_info.dart';
 import 'package:temis/wrapper.dart';
 
 void main() => runApp(MyApp());
@@ -40,8 +41,12 @@ class MyApp extends StatelessWidget {
         fontSize: 24,
       ),
       subtitle1: GoogleFonts.roboto(
-        color: Color(0xffA5A5A7),
+        color: Color(0xff737373),
         fontSize: 16,
+      ),
+      subtitle2: GoogleFonts.roboto(
+        color: Color(0xff737373),
+        fontSize: 14,
       ),
       bodyText1: GoogleFonts.roboto(
         color: Color(0xff020202),
@@ -76,6 +81,7 @@ class MyApp extends StatelessWidget {
           '/startgame': (_) => StarGame(),
           '/error_case': (_) => CaseInactive(),
           '/judgment': (_) => ScreenJudgment(),
+          '/page_info': (_) => PageInfo(),
         },
       ),
     );

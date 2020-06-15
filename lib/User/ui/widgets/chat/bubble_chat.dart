@@ -36,7 +36,7 @@ class BubbleChat extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.6,
                       padding: EdgeInsets.fromLTRB(16, 8, 12, 8),
                       child: Text(
-                        message,
+                        message.replaceAll("\\n", '\n'),
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 14,
@@ -113,7 +113,7 @@ class BubbleChat extends StatelessWidget {
                                         ],
                                       ),
                                 Text(
-                                  message,
+                                  message.replaceAll("\\n", '\n'),
                                   textAlign: TextAlign.start,
                                   style: TextStyle(
                                     fontSize: 16,

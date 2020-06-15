@@ -39,7 +39,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                     height: 20,
                   ),
                   Text(
-                    game.judgment.text,
+                    game.judgment.text.replaceAll("\\n", '\n'),
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(

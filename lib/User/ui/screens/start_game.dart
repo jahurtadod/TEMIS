@@ -47,7 +47,7 @@ class _StarGameState extends State<StarGame> {
                           height: 20,
                         ),
                         Text(
-                          game.caseGame.description,
+                          game.caseGame.description.replaceAll("\\n", '\n'),
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                         SizedBox(

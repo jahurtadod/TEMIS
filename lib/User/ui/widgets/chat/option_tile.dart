@@ -54,7 +54,7 @@ class OptionTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    sequence.text,
+                    sequence.text.replaceAll("\\n", '\n'),
                     style: Theme.of(context).textTheme.bodyText1.copyWith(
                           color: Theme.of(context).colorScheme.onSecondary,
                         ),

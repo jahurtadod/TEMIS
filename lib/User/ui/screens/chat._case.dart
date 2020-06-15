@@ -21,8 +21,7 @@ class ChatCase extends StatefulWidget {
 class _ChatCaseState extends State<ChatCase> {
   List<BubbleChat> _message = <BubbleChat>[
     BubbleChat(
-      message:
-          "Hola, yo soy Temisito.\nVoy a acompañarte en esta aventura dale a siguiente para mostrar los diálogos.",
+      message: "Hola, soy temisito.\nEstoy aquí para ayudarte.\nPulsa en \"Siguiente\"",
       isMe: true,
       role: "temis",
       time: DateFormat.jm().format(DateTime.now()),

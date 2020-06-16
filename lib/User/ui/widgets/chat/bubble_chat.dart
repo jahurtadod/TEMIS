@@ -39,7 +39,7 @@ class BubbleChat extends StatelessWidget {
                         message.replaceAll("\\n", '\n'),
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontFamily: 'Roboto',
                         ),
                       ),

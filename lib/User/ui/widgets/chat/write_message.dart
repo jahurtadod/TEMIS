@@ -73,7 +73,7 @@ class _WriteMessageState extends State<WriteMessage> {
         ),
         SlidingUpPanel(
           minHeight: 0,
-          maxHeight: MediaQuery.of(context).size.height / 3,
+          maxHeight: MediaQuery.of(context).size.height / 2,
           controller: _pc,
           panelBuilder: (ScrollController sc) {
             return ListView(

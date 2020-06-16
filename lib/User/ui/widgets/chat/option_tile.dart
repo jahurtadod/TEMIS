@@ -13,11 +13,9 @@ class OptionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(
-            "1 Print ${sequence.next.documentID} + $index + ${sequence.points}");
         // Returns the values of the option
         if (sequence.points == null) {
-          // 
+          //
           onSelectOption(sequence.next.documentID, sequence.text, 0);
         } else {
           onSelectOption(
@@ -35,7 +33,7 @@ class OptionTile extends StatelessWidget {
                 "Opción ${index + 1}",
                 textAlign: TextAlign.end,
                 style: Theme.of(context).textTheme.bodyText1.copyWith(
-                      fontSize: 10,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.primary,
                     ),
               ),
@@ -45,7 +43,7 @@ class OptionTile extends StatelessWidget {
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: Color(0xFFD5F1FF),
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             child: Container(
@@ -55,9 +53,10 @@ class OptionTile extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     sequence.text.replaceAll("\\n", '\n'),
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
-                          color: Theme.of(context).colorScheme.onSecondary,
-                        ),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'Roboto',
+                    ),
                   ),
                 ],
               ),

@@ -77,7 +77,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                         ),
                         TextSpan(
                           text:
-                              "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings}",
+                              "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings} - Ruta: ${game.caseGame.route.role}",
                         )
                       ],
                     ),

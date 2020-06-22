@@ -26,19 +26,21 @@ class Footer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              FlatButton(
+              RaisedButton(
+                elevation: 0.9,
+                color: Theme.of(context).colorScheme.primary,
                   onPressed: () {
                     Navigator.of(context).pushNamed('/page_info');
                   },
                   child: Text(
                     "TEMIS",
-                    style: TextStyle(fontSize: 12.0, color: Color(0xff7ec7d0)),
+                    style: TextStyle(fontSize: 14.0, color: Colors.white),
                   )),
               FlatButton(
                   onPressed: _launchURL,
                   child: Text(
                     "Proyecto Ascendere",
-                    style: TextStyle(fontSize: 12.0, color: Color(0xff7ec7d0)),
+                    style: TextStyle(fontSize: 14.0, color: Color(0xff7ec7d0)),
                   )),
             ],
           ),

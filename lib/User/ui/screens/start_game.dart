@@ -58,7 +58,7 @@ class _StarGameState extends State<StarGame> {
                             style: Theme.of(context).textTheme.subtitle1,
                             children: [
                               TextSpan(
-                                text: "Numero de finales posibles: ",
+                                text: "Número de finales posibles: ",
                                 style: Theme.of(context)
                                     .textTheme
                                     .subtitle1
@@ -68,8 +68,9 @@ class _StarGameState extends State<StarGame> {
                                             .primaryVariant),
                               ),
                               TextSpan(
-                                text: game.caseGame.numberPossibleEndings
-                                    .toString(),
+                                text:
+                                    "${game.caseGame.numberPossibleEndings} (todas las rutas)."
+                                        .toString(),
                               )
                             ],
                           ),

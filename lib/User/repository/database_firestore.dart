@@ -139,7 +139,7 @@ class DatabaseService {
         role: doc.data['role'],
         text: doc.data['text'],
         type: doc.data['type'],
-        numberEnding: doc.data['numberEnding'],
+        numberEnding: doc.data['numberPossibleEndings'],
         sequence: List.from(doc.data['sequence'].map((doc) {
           return Sequence(
             next: doc['next'],

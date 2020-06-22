@@ -55,11 +55,19 @@ class NavBarChat extends StatelessWidget {
               ),
             ),
             Spacer(),
-            IconButton(
-              padding: EdgeInsets.all(0.0),
-              color: Theme.of(context).colorScheme.primary,
-              icon: Icon(Icons.more_vert, size: sizeIcon),
-              onPressed: () {},
+            ClipOval(
+              child: Container(
+                height: 40,
+                width: 40,
+                color: Colors.cyan,
+                child: Center(
+                  child: Image.asset(
+                    'assets/${game.caseGame.route.role.toLowerCase()}.png',
+                    height: 30,
+                    width: 30,
+                  ),
+                ),
+              ),
             ),
           ],
         );

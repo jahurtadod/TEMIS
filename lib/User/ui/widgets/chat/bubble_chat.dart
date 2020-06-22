@@ -4,7 +4,7 @@ class BubbleChat extends StatelessWidget {
   final bool isMe;
   final String message;
   final String time;
-  String role;
+  final String role;
 
   BubbleChat({this.isMe, this.message, this.role, this.time});
 
@@ -170,7 +170,7 @@ class BubbleChat extends StatelessWidget {
         message = "Jorge Hurtado (Fiscalía)";
         break;
       case "juez":
-        message = "Marco Vircilio (Juez)";
+        message = "Marco Virgilio (Juez)";
         break;
       case "secretario":
         message = "Maria Emilia (Secretario)";

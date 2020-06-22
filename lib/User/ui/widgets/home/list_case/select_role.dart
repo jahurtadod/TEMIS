@@ -5,7 +5,7 @@ import 'package:temis/User/model/role.dart';
 import 'package:temis/User/ui/widgets/home/list_case/role_widget.dart';
 
 class SelectRole extends StatefulWidget {
-  CaseModel caseGame;
+  final CaseModel caseGame;
 
   SelectRole({@required this.caseGame});
 
@@ -54,7 +54,7 @@ class _SelectRoleState extends State<SelectRole> {
               ),
               Spacer(),
               RoleWidget(
-                icon: "abogado",
+                icon: "defensa",
                 text: "Defensa",
                 game: Game(
                   caseGame: widget.caseGame,

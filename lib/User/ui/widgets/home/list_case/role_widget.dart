@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:temis/User/model/game.dart';
 
 class RoleWidget extends StatefulWidget {
-  var text = "";
-  var icon = "";
-  Game game;
+  final text;
+  final icon;
+  final Game game;
 
   RoleWidget({this.icon, this.text, this.game});
 

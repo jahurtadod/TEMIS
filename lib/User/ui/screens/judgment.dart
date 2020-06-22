@@ -31,7 +31,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                   // ),
                   Container(
                     child: Text(
-                      "SENTENCIA",
+                      "Resolución Judicial:",
                       style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
@@ -75,10 +75,15 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                               color:
                                   Theme.of(context).colorScheme.primaryVariant),
                         ),
-                        TextSpan(
-                          text:
-                              "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings} - Ruta: ${game.caseGame.route.role}",
-                        )
+                        game.caseGame.route.role == "FISCALIA"
+                            ? TextSpan(
+                                text:
+                                    "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings} - Ruta: FISCALÍA",
+                              )
+                            : TextSpan(
+                                text:
+                                    "${game.judgment.numberEnding} / ${game.caseGame.route.numberPossibleEndings} - Ruta: ${game.caseGame.route.role}",
+                              )
                       ],
                     ),
                   ),
@@ -104,7 +109,7 @@ class _ScreenJudgmentState extends State<ScreenJudgment> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: Text("Comenzar otra aventura"),
+                      child: Text("Comenzar otra audiencia"),
                       //color: Color(0xff7ec7d0),
                       shape: RoundedRectangleBorder(),
                     ),

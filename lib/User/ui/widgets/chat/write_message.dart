@@ -48,21 +48,16 @@ class _WriteMessageState extends State<WriteMessage> {
                             color: Theme.of(context).colorScheme.onSecondary,
                           ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        print("Enviar");
-                      },
+                    Container(
+                      width: 38.0,
+                      height: 45.0,
                       child: Container(
-                        width: 38.0,
-                        height: 45.0,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(7, 5, 5, 6),
-                          child: Image.asset('assets/send.png'),
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).colorScheme.onSecondary,
-                        ),
+                        padding: EdgeInsets.fromLTRB(7, 5, 5, 6),
+                        child: Image.asset('assets/send.png'),
+                      ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),
                   ],

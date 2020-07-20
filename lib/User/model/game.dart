@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:temis/Case/model/case.dart';
-import 'package:temis/User/model/user.dart';
+import 'package:temis/User/model/case.dart';
 
 class Game {
   final String id;
   final bool active;
   final String nameCase;
-  final int points;
-  final Case caseGame;
+  int points;
+  CaseModel caseGame;
   final DateTime lastMessageDate;
   final String lastMessage;
   final String colorCase;
+  final String role;
+  final String idCase;
+  Event judgment;
   //User userOwner;
 
   Game({
     Key key,
-    @required this.active,
-    @required this.nameCase,
-    @required this.points,
-    @required this.caseGame,
-    @required this.lastMessageDate,
-    @required this.lastMessage,
-    @required this.colorCase,
-    //this.userOwner,
+    this.active,
+    this.nameCase,
+    this.points,
+    this.caseGame,
+    this.lastMessageDate,
+    this.lastMessage,
+    this.colorCase,
+    this.role,
+    this.idCase,
     this.id,
+    this.judgment,
   });
 }

@@ -1,4 +1,4 @@
-package com.example.temis
+package com.ascendere.temis
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

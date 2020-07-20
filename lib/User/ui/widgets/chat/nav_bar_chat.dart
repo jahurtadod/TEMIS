@@ -59,7 +59,6 @@ class NavBarChat extends StatelessWidget {
               child: Container(
                 height: 40,
                 width: 40,
-                color: Colors.cyan,
                 child: Center(
                   child: Image.asset(
                     'assets/${game.caseGame.route.role.toLowerCase()}.png',

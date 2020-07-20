@@ -116,9 +116,10 @@ class _ChatCaseState extends State<ChatCase> {
           break;
         case "JUDGMENT":
           _updatePoints();
-          print("Validar Points");
+          
           game.judgment = event;
           game.points = pointsCase;
+          print("Validar Points ${event.numberEnding}");
           Navigator.of(context)
               .pushReplacementNamed('/judgment', arguments: game);
           print("sentencia");
